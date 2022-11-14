@@ -1,0 +1,7 @@
+@font-face {
+  font-family: "dunggeunmo";
+  src: url("./NeoDunggeunmoPro-Regular.ttf") format("truetype"),
+    url("./NeoDunggeunmoPro-Regular.woff") format("woff");
+
+  font-style: normal;
+}
