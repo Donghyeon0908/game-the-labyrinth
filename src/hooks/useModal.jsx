@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "../components/Modal";
 
 function useModal(initialState = false) {
@@ -16,7 +16,7 @@ function useModal(initialState = false) {
     );
   };
 
-  return [customModal, handleModal, isOpenModal];
+  return [customModal, handleModal];
 }
 
 export default useModal;

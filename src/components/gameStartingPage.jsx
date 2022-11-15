@@ -4,13 +4,16 @@ import { styled } from "@stitches/react";
 import GameStartingPageHeader from "./gameStartingPageHeader";
 import gameStaringBackgroundImage from "../assets/images/initImage.png";
 import Button from "./button";
+import useModal from "../hooks/useModal";
 
 function GameStartingPage() {
+  const [GuideModal, handleModal] = useModal();
   return (
     <GameStartingPageContainer>
       <GameStartingPageHeader />
+      <GuideModal>Game Guide</GuideModal>
       <ButtonContainer>
-        <Button buttonName="Game Guide" />
+        <Button onClick={handleModal} buttonName="Game Guide" />
         <Button buttonName="Game Start" />
       </ButtonContainer>
     </GameStartingPageContainer>
