@@ -1,5 +1,6 @@
 import React from "react";
 import { styled } from "@stitches/react";
+import { useNavigate } from "react-router-dom";
 
 import GameStartingPageHeader from "./gameStartingPageHeader";
 import gameStaringBackgroundImage from "../assets/images/initImage.png";
@@ -8,6 +9,7 @@ import useModal from "../hooks/useModal";
 
 function GameStartingPage() {
   const [GuideModal, handleModal] = useModal();
+  const navigate = useNavigate();
 
   return (
     <GameStartingPageContainer>
@@ -15,7 +17,7 @@ function GameStartingPage() {
       <GuideModal>Game Guide</GuideModal>
       <ButtonContainer>
         <Button onClick={handleModal} buttonName="Game Guide" />
-        <Button buttonName="Game Start" />
+        <Button onClick={() => navigate("/game")} buttonName="Game Start" />
       </ButtonContainer>
     </GameStartingPageContainer>
   );
