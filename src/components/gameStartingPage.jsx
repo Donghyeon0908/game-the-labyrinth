@@ -8,6 +8,7 @@ import useModal from "../hooks/useModal";
 
 function GameStartingPage() {
   const [GuideModal, handleModal] = useModal();
+
   return (
     <GameStartingPageContainer>
       <GameStartingPageHeader />
