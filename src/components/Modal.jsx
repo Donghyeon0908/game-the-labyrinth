@@ -7,8 +7,8 @@ function Portal({ children }) {
   return ReactDOM.createPortal(children, modalRoot);
 }
 
-function Modal({ children, IsOpenModal, handleIsOpenModal }) {
-  if (!IsOpenModal) {
+function Modal({ children, isOpenModal, handleIsOpenModal }) {
+  if (!isOpenModal) {
     return null;
   }
 
