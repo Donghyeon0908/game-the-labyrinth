@@ -6,15 +6,15 @@ function Button({ handleButtonClick, buttonName }) {
 }
 
 const ButtonWrapper = styled("button", {
-  padding: "0.6rem",
   margin: "0.2rem",
+  padding: "0.6rem",
   borderRadius: "7px",
   backgroundColor: "#bfbbbc",
+  boxShadow: `0 0.1em #636262`,
   color: "#636262",
   fontFamily: "dunggeunmo",
-  boxShadow: `0 0.1em #636262`,
   textShadow: "-1px -1px ##000000, 1px 1px #fffff",
-  fontSize: "1.9rem",
+  fontSize: "1.7vw",
   cursor: "pointer",
 
   "&:hover": {
