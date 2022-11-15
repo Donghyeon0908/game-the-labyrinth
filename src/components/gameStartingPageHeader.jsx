@@ -6,8 +6,8 @@ function GameStartingPageHeader() {
 }
 
 const HeaderContainer = styled("header", {
-  position: "relative",
   display: "flex",
+  position: "relative",
   alignItems: "center",
   justifyContent: "center",
   padding: "5rem",

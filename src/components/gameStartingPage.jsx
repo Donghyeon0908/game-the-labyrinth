@@ -27,8 +27,8 @@ const GameStartingPageContainer = styled("div", {
 });
 
 const ButtonContainer = styled("div", {
-  position: "relative",
   display: "flex",
+  position: "relative",
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
