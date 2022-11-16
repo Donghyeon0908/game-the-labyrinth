@@ -1,9 +1,10 @@
 import React from "react";
-import { styled } from "@stitches/react";
 import { useNavigate } from "react-router-dom";
 
-import GameStartingPageHeader from "./gameStartingPageHeader";
+import { styled } from "@stitches/react";
+
 import gameStaringBackgroundImage from "../assets/images/initImage.png";
+import GameStartingPageHeader from "./gameStartingPageHeader";
 import Button from "./button";
 import useModal from "../hooks/useModal";
 

@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
+
 import Phaser from "phaser";
+
 import config from "../phaser/config";
 
 function GameView() {
