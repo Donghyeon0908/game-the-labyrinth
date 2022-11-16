@@ -7,6 +7,10 @@ export default class MainScene extends Phaser.Scene {
 
   preload() {
     this.load.image("tiles", "assets/images/tiles.png");
+    this.load.spritesheet("player", "assets/images/player.png", {
+      frameWidth: 50,
+      frameHeight: 50,
+    });
   }
 
   create() {
@@ -31,5 +35,7 @@ export default class MainScene extends Phaser.Scene {
     map.addTilesetImage("tiles");
 
     const layer = map.createLayer(0, "tiles", 0, 0);
+
+    this.player = this.physics.add.sprite(50, 50, "player");
   }
 }

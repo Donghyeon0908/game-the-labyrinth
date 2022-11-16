@@ -8,6 +8,12 @@ const config = {
   pixelArt: true,
   parent: "container",
   scene: [MainScene],
+  physics: {
+    default: "arcade",
+    arcade: {
+      debug: true,
+    },
+  },
 };
 
 export default config;
