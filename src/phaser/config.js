@@ -3,11 +3,17 @@ import MainScene from "./mainScene";
 
 const config = {
   type: Phaser.AUTO,
-  width: 320,
-  height: 320,
+  width: 640,
+  height: 640,
   pixelArt: true,
   parent: "container",
   scene: [MainScene],
+  physics: {
+    default: "arcade",
+    arcade: {
+      debug: true,
+    },
+  },
 };
 
 export default config;

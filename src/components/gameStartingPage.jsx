@@ -1,11 +1,13 @@
 import React from "react";
-import { styled } from "@stitches/react";
 import { useNavigate } from "react-router-dom";
 
-import GameStartingPageHeader from "./gameStartingPageHeader";
+import { styled } from "@stitches/react";
+
 import gameStaringBackgroundImage from "../assets/images/initImage.png";
+import GameStartingPageHeader from "./gameStartingPageHeader";
 import Button from "./button";
 import useModal from "../hooks/useModal";
+import BUTTON_NAME from "../constants/buttonName";
 
 function GameStartingPage() {
   const [GuideModal, handleModal] = useModal();
@@ -16,8 +18,11 @@ function GameStartingPage() {
       <GameStartingPageHeader />
       <GuideModal>Game Guide</GuideModal>
       <ButtonContainer>
-        <Button onClick={handleModal} buttonName="Game Guide" />
-        <Button onClick={() => navigate("/game")} buttonName="Game Start" />
+        <Button onClick={handleModal} buttonName={BUTTON_NAME.GUIDE} />
+        <Button
+          onClick={() => navigate("/game")}
+          buttonName={BUTTON_NAME.START}
+        />
       </ButtonContainer>
     </GameStartingPageContainer>
   );
@@ -35,10 +40,10 @@ const GameStartingPageContainer = styled("div", {
 const ButtonContainer = styled("div", {
   display: "flex",
   position: "relative",
+  top: "50%",
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  padding: "10rem",
 });
 
 export default GameStartingPage;
