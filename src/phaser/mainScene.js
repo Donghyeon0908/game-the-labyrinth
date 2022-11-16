@@ -54,6 +54,8 @@ export default class MainScene extends Scene {
     });
 
     this.physics.add.collider(this.player, layer);
+    this.player.setCollideWorldBounds(true);
+
     layer.setCollision(0);
 
     this.anims.create({
