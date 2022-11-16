@@ -10,7 +10,7 @@ export default class MainScene extends Phaser.Scene {
   }
 
   create() {
-    const array = [
+    const mapDataArray = [
       [2, 1, 1, 0, 0, 0, 0, 0, 0, 0],
       [0, 1, 1, 0, 0, 0, 0, 0, 0, 0],
       [0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
@@ -24,7 +24,7 @@ export default class MainScene extends Phaser.Scene {
     ];
 
     const map = this.make.tilemap({
-      data: array,
+      data: mapDataArray,
       tileHeight: 64,
       tileWidth: 64,
     });
