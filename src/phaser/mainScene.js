@@ -44,15 +44,6 @@ export default class MainScene extends Scene {
       "player"
     );
 
-    this.target = new Vector2();
-    this.input.on("pointerup", (pointer) => {
-      const { worldX, worldY } = pointer;
-
-      this.target.x = worldX;
-      this.target.y = worldY;
-      this.physics.moveToObject(this.player, this.target, 200);
-    });
-
     this.physics.add.collider(this.player, layer);
     this.player.setCollideWorldBounds(true);
 
@@ -66,21 +57,51 @@ export default class MainScene extends Scene {
       frameRate: 5,
       repeat: -1,
     });
-    this.player.play("walk");
+
+    this.cursors = this.input.keyboard.createCursorKeys();
+
+    // this.target = new Vector2();
+    // this.input.on("pointerup", (pointer) => {
+    //   const { worldX, worldY } = pointer;
+
+    //   this.target.x = worldX;
+    //   this.target.y = worldY;
+    // });
   }
 
   update() {
-    if (this.player.body.speed > 0) {
-      const mousePoint = pMath.Distance.Between(
-        this.player.x,
-        this.player.y,
-        this.target.x,
-        this.target.y
-      );
-
-      if (mousePoint < 4) {
-        this.player.body.reset(this.target.x, this.target.y);
-      }
+    if (this.cursors.up.isDown) {
+      this.player.setVelocityY(-160);
+      this.player.setAccelerationX(0);
+      this.player.play("walk", true);
+    } else if (this.cursors.down.isDown) {
+      this.player.setAccelerationY(160);
+      this.player.setAccelerationX(0);
+      this.player.play("walk", true);
+    } else if (this.cursors.right.isDown) {
+      this.player.setAccelerationX(160);
+      this.player.setAccelerationY(0);
+      this.player.play("walk", true);
+    } else if (this.cursors.left.isDown) {
+      this.player.setAccelerationX(-160);
+      this.player.setAccelerationY(0);
+      this.player.play("walk", true);
+    } else {
+      this.player.setVelocityY(0);
+      this.player.setVelocityX(0);
+      this.player.play("walk", false);
     }
+
+    // if (this.player.body.speed > 0) {
+    //   const mousePoint = pMath.Distance.Between(
+    //     this.player.x,
+    //     this.player.y,
+    //     this.target.x,
+    //     this.target.y
+    //   );
+    //   if (mousePoint < 4) {
+    //     this.player.body.reset(this.target.x, this.target.y);
+    //   }
+    // }
   }
 }
