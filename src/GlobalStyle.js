@@ -11,7 +11,7 @@ const GlobalStyle = globalCss({
     margin: 0,
     padding: 0,
     fontFamily: "dunggeunmo",
-    fontSize: "16",
+    fontSize: "16px",
   },
 });
 
