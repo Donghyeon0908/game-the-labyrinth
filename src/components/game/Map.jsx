@@ -2,12 +2,13 @@ import { useContext, useEffect } from "react";
 
 import useStore from "../../store/useStore";
 import CanvasContext from "./CanvasContext";
-import { LAYERS, MAP_SIZE, TILE_SIZE } from "../../constants/constants";
+import { MAP_SIZE, TILE_SIZE } from "../../constants/constants";
 
 function Map() {
   const ctx = useContext(CanvasContext);
-  const { loadMap } = useStore((state) => ({
+  const { loadMap, mapData } = useStore((state) => ({
     loadMap: state.loadMap,
+    mapData: state.mapData,
   }));
   const { COLS, ROWS } = MAP_SIZE;
   useEffect(() => {
@@ -35,9 +36,9 @@ function Map() {
       }
     };
 
-    drawLayer(LAYERS[0]);
+    drawLayer(mapData);
     loadMap(true);
-  }, [COLS, ROWS, ctx, loadMap]);
+  }, [COLS, ROWS, ctx, loadMap, mapData]);
 
   return null;
 }

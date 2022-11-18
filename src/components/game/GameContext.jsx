@@ -6,10 +6,11 @@ import { checkMapCollision } from "../../utils/collision";
 import CanvasContext from "./CanvasContext";
 
 function GameContext({ children }) {
-  const { characterX, characterY, move } = useStore((state) => ({
+  const { characterX, characterY, move, mapData } = useStore((state) => ({
     move: state.move,
     characterX: state.x,
     characterY: state.y,
+    mapData: state.mapData,
   }));
   const canvasRef = useRef(null);
   const ref = useRef();
@@ -24,14 +25,14 @@ function GameContext({ children }) {
       const { key } = event;
       if (KEYBOARD_MOVE[key]) {
         const [x, y] = KEYBOARD_MOVE[key];
-        if (!checkMapCollision(characterX + x, characterY + y)) {
+        if (!checkMapCollision(characterX + x, characterY + y, mapData)) {
           setIsUpdateRequired(true);
           setIsVisible(false);
           move([x, y]);
         }
       }
     },
-    [move, characterX, characterY]
+    [move, characterX, characterY, mapData]
   );
 
   const tick = useCallback(() => {
