@@ -5,9 +5,9 @@ import { styled } from "@stitches/react";
 
 import backgroundImage from "../assets/images/initImage.png";
 import GameStartingPageHeader from "./gameStartingPageHeader";
-import Button from "./button";
+import Button from "./button/Button";
 import useModal from "../hooks/useModal";
-import BUTTON_NAME from "../constants/buttonName";
+import { BUTTON_NAME } from "../constants/constants";
 
 function GameStartingPage() {
   const [GuideModal, handleModal] = useModal();

@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+
 import GameStartingPage from "./components/gameStartingPage";
 import GameView from "./components/gameView";
 import GlobalStyle from "./GlobalStyle";
