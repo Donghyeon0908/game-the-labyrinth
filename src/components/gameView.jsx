@@ -1,17 +1,19 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-import Phaser from "phaser";
 import { styled } from "@stitches/react";
 
 import backgroundImage from "../assets/images/dungeon.png";
-import config from "../phaser/config";
+import GameContext from "./game/GameContext";
+import View from "./game/View";
 
 function GameView() {
-  useEffect(() => {
-    const game = new Phaser.Game(config);
-  }, []);
-
-  return <GameContainer id="container"></GameContainer>;
+  return (
+    <GameContainer>
+      <GameContext>
+        <View />
+      </GameContext>
+    </GameContainer>
+  );
 }
 
 const GameContainer = styled("div", {
