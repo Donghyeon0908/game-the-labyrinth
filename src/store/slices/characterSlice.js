@@ -2,11 +2,11 @@ const characterSlice = (set) => ({
   x: 9,
   y: 9,
   characterLoaded: false,
-  heroImg: null,
+  characterImg: null,
 
   setBufferCharacterImage: (payload) =>
     set(() => ({
-      heroImg: payload,
+      characterImg: payload,
     })),
 
   move: (payload) =>
