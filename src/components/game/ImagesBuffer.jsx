@@ -9,6 +9,7 @@ function ImagesBuffer() {
   const { setBufferImage } = useStore((state) => ({
     setBufferImage: state.setBufferImage,
   }));
+
   return (
     <ImageBuffer>
       {Object.keys(MAP_TILES).map((key) => {

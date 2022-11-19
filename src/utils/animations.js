@@ -12,6 +12,15 @@ const unfoldInkeyframes = keyframes({
   },
 });
 
-const unfoldIn = `${unfoldInkeyframes} 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards`;
+const fadeInkeyframes = keyframes({
+  from: {
+    opacity: "0",
+  },
+  to: {
+    opacity: "1",
+  },
+});
 
-export default unfoldIn;
+export const unfoldIn = `${unfoldInkeyframes} 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards`;
+
+export const fadeIn = `${fadeInkeyframes} 2.5s`;

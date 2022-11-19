@@ -12,7 +12,6 @@ function View() {
   const width = MAP_SIZE.COLS * TILE_SIZE;
   const height = MAP_SIZE.ROWS * TILE_SIZE;
   const ctx = useContext(CanvasContext);
-
   const { tilesImageData, isMap } = useStore((state) => ({
     tilesImageData: state.tilesImageData,
     isMap: state.isMap,

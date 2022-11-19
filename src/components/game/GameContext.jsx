@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import useStore from "../../store/useStore";
 import { MAP_SIZE, TILE_SIZE, KEYBOARD_MOVE } from "../../constants/constants";
-import { checkMapCollision } from "../../utils/collision";
+import checkMapCollision from "../../utils/collision";
 import CanvasContext from "./CanvasContext";
 
 function GameContext({ children }) {
@@ -27,15 +27,19 @@ function GameContext({ children }) {
 
     switch (key) {
       case "w":
+      case "ㅈ":
         type = "up";
         break;
       case "a":
+      case "ㅁ":
         type = "left";
         break;
       case "d":
+      case "ㅇ":
         type = "right";
         break;
       case "s":
+      case "ㄴ":
         type = "down";
         break;
       default:

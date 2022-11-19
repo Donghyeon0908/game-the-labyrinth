@@ -1,24 +1,40 @@
-import { styled } from "@stitches/react";
 import React from "react";
-import BGM from "../../assets/audios/ofeliasdream.mp3";
+
+import { styled } from "@stitches/react";
+
+import BGM from "../../assets/audios/enigmatic.mp3";
 
 function Music() {
   const audio = new Audio(BGM);
   const startMusic = () => {
     audio.play();
   };
+  const stopMusic = () => {
+    audio.pause();
+  };
 
   return (
-    <MUSICButton type="button" onClick={startMusic}>
-      BGMplay
-    </MUSICButton>
+    <>
+      <MusicButton
+        type="button"
+        onClick={startMusic}
+        css={{ top: "5px", left: "5px" }}
+      >
+        BGMplay
+      </MusicButton>
+      <MusicButton
+        type="button"
+        onClick={stopMusic}
+        css={{ top: "5px", left: "3.7%" }}
+      >
+        BGMstop
+      </MusicButton>
+    </>
   );
 }
 
-const MUSICButton = styled("button", {
+const MusicButton = styled("button", {
   position: "absolute",
-  top: "5px",
-  left: "5px",
   margin: "0.2rem",
   backgroundColor: "#bfbbbc",
   boxShadow: `0 0.1em #636262`,
