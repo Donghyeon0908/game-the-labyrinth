@@ -31,4 +31,6 @@ export const OBSTACLE_TILE = 4;
 
 export const CHARACTER_SPRITE = "assets/images/defaultPlayer.png";
 
+export const CHARACTER_SPRITE_RIGHT = "assets/images/right-single.png";
+
 export const CHARACTER_SIZE = 50;

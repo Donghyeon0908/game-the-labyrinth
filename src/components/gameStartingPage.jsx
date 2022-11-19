@@ -9,6 +9,7 @@ import Button from "./button/Button";
 import useModal from "../hooks/useModal";
 import { BUTTON_NAME } from "../constants/constants";
 import unfoldIn from "../utils/animations";
+import Music from "./game/Music";
 
 function GameStartingPage() {
   const [GuideModal, handleModal] = useModal();
@@ -16,6 +17,7 @@ function GameStartingPage() {
 
   return (
     <GameStartingPageContainer>
+      <Music />
       <GameStartingPageHeader />
       <GuideModal animation={unfoldIn}>Game Guide</GuideModal>
       <ButtonContainer>
