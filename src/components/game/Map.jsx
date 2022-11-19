@@ -6,11 +6,12 @@ import { MAP_SIZE, TILE_SIZE } from "../../constants/constants";
 
 function Map() {
   const ctx = useContext(CanvasContext);
-  const { loadMap, mapData } = useStore((state) => ({
-    loadMap: state.loadMap,
+  const { setIsMap, mapData } = useStore((state) => ({
+    setIsMap: state.setIsMap,
     mapData: state.mapData,
   }));
   const { COLS, ROWS } = MAP_SIZE;
+
   useEffect(() => {
     const drawLayer = (grid) => {
       for (let i = 0; i < ROWS; i += 1) {
@@ -35,10 +36,9 @@ function Map() {
         }
       }
     };
-
     drawLayer(mapData);
-    loadMap(true);
-  }, [COLS, ROWS, ctx, loadMap, mapData]);
+    setIsMap(true);
+  }, [COLS, ROWS, ctx, setIsMap, mapData]);
 
   return null;
 }

@@ -1,11 +1,7 @@
-import { MAP_SIZE, SOLID_TILE } from "../constants/constants";
+import { MAP_SIZE, OBSTACLE_TILE } from "../constants/constants";
 
-export const isSolidTile = (x, y, mapData) => {
-  if (SOLID_TILE === mapData[y][x]) {
-    return true;
-  }
-
-  return false;
+export const isObstacleTile = (x, y, mapData) => {
+  return OBSTACLE_TILE === mapData[y][x];
 };
 
 export const isMapEdge = (x, y) => {
@@ -14,5 +10,5 @@ export const isMapEdge = (x, y) => {
 };
 
 export const checkMapCollision = (x, y, mapData) => {
-  return isMapEdge(x, y) || isSolidTile(x, y, mapData);
+  return isMapEdge(x, y) || isObstacleTile(x, y, mapData);
 };

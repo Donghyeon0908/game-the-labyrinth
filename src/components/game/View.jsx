@@ -13,9 +13,9 @@ function View() {
   const height = MAP_SIZE.ROWS * TILE_SIZE;
   const ctx = useContext(CanvasContext);
 
-  const { imageData, mapLoaded } = useStore((state) => ({
-    imageData: state.imageData,
-    mapLoaded: state.mapLoaded,
+  const { tilesImageData, isMap } = useStore((state) => ({
+    tilesImageData: state.tilesImageData,
+    isMap: state.isMap,
   }));
 
   useEffect(() => {
@@ -25,12 +25,12 @@ function View() {
   return (
     <>
       <ImagesBuffer />
-      {Object.keys(imageData).length === Object.keys(MAP_TILES).length && (
+      {Object.keys(tilesImageData).length === Object.keys(MAP_TILES).length && (
         <Grid width={width} height={height}>
           <Map />
         </Grid>
       )}
-      {mapLoaded && <Character />}
+      {isMap && <Character />}
     </>
   );
 }

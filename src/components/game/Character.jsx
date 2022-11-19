@@ -13,14 +13,13 @@ import CanvasContext from "./CanvasContext";
 function Character() {
   const ctx = useContext(CanvasContext);
   const characterRef = useRef(null);
-  const { x, y, characterImg, loadCharacter, setBufferCharacterImage } =
-    useStore((state) => ({
-      characterImg: state.characterImg,
-      loadCharacter: state.loadCharacter,
-      x: state.x,
-      y: state.y,
-      setBufferCharacterImage: state.setBufferCharacterImage,
-    }));
+  const { x, y, characterImg, setBufferCharacterImage } = useStore((state) => ({
+    characterImg: state.characterImg,
+    x: state.x,
+    y: state.y,
+    setBufferCharacterImage: state.setBufferCharacterImage,
+  }));
+
   useEffect(() => {
     if (characterImg) {
       ctx.drawImage(
@@ -30,9 +29,8 @@ function Character() {
         CHARACTER_SIZE,
         CHARACTER_SIZE
       );
-      loadCharacter(true);
     }
-  }, [ctx, characterImg, x, y, loadCharacter]);
+  }, [ctx, characterImg, x, y]);
 
   return (
     <ImageBuffer

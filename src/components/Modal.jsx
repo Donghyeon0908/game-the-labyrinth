@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { keyframes, styled } from "@stitches/react";
+import { styled } from "@stitches/react";
 
 function Portal({ children }) {
   const modalRoot = document.getElementById("portal-root");
   return ReactDOM.createPortal(children, modalRoot);
 }
 
-function Modal({ children, isOpenModal, handleIsOpenModal }) {
+function Modal({ animation, children, isOpenModal, handleIsOpenModal }) {
   if (!isOpenModal) {
     return null;
   }
@@ -24,7 +24,11 @@ function Modal({ children, isOpenModal, handleIsOpenModal }) {
   return (
     <Portal>
       <ModalContainer onClick={handleModalClose}>
-        <ModalInner>
+        <ModalInner
+          css={{
+            animation: `${animation}`,
+          }}
+        >
           <CloseButton onClick={() => handleIsOpenModal(false)}>
             닫기
           </CloseButton>
@@ -34,18 +38,6 @@ function Modal({ children, isOpenModal, handleIsOpenModal }) {
     </Portal>
   );
 }
-
-const unfoldIn = keyframes({
-  "0%": {
-    transform: "scaleX(0) scaleY(0.005)",
-  },
-  "50%": {
-    transform: "scaleX(1) scaleY(0.005)",
-  },
-  "100%": {
-    transform: "scaleY(1) scaleX(1)",
-  },
-});
 
 const ModalContainer = styled("div", {
   position: "fixed",
@@ -67,7 +59,6 @@ const ModalInner = styled("div", {
   maxHeight: "40rem",
   background: "#fff",
   borderRadius: "3px",
-  animation: `${unfoldIn} 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards`,
 });
 
 const CloseButton = styled("button", {
