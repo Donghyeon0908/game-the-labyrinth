@@ -5,10 +5,14 @@ import { styled } from "@stitches/react";
 import backgroundImage from "../assets/images/dungeon.png";
 import GameContext from "./game/GameContext";
 import View from "./game/View";
+import GameInitSetting from "./game/GameInitSetting";
+import GameController from "./game/GameController";
 
 function GameView() {
   return (
     <GameContainer>
+      <GameInitSetting />
+      <GameController />
       <GameContext>
         <View />
       </GameContext>

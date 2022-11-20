@@ -5,35 +5,39 @@ const getManhattanDistance = (from, to) => {
 };
 
 const getNeighbors = (grid, node) => {
-  const ret = [];
+  const neighbors = [];
   const { x, y } = node;
+
   if (grid[x - 1] && grid[x - 1][y]) {
-    ret.push(grid[x - 1][y]);
+    neighbors.push(grid[x - 1][y]);
   }
   if (grid[x + 1] && grid[x + 1][y]) {
-    ret.push(grid[x + 1][y]);
+    neighbors.push(grid[x + 1][y]);
   }
   if (grid[x][y - 1] && grid[x][y - 1]) {
-    ret.push(grid[x][y - 1]);
+    neighbors.push(grid[x][y - 1]);
   }
   if (grid[x][y + 1] && grid[x][y + 1]) {
-    ret.push(grid[x][y + 1]);
+    neighbors.push(grid[x][y + 1]);
   }
-  return ret;
+
+  return neighbors;
 };
 
 const AStar = (grid, start, end) => {
-  const openList = [];
+  const openList = [start];
   const result = [];
-  openList.push(start);
+
   while (openList.length > 0) {
-    let lowInd = 0;
+    let lowIdx = 0;
+
     for (let i = 0; i < openList.length; i += 1) {
-      if (openList[i].f < openList[lowInd].f) {
-        lowInd = i;
+      if (openList[i].f < openList[lowIdx].f) {
+        lowIdx = i;
       }
     }
-    const currentNode = openList[lowInd];
+
+    const currentNode = openList[lowIdx];
 
     if (currentNode === end) {
       let cur = currentNode;
@@ -45,28 +49,29 @@ const AStar = (grid, start, end) => {
 
       return result.reverse();
     }
-    openList.splice(lowInd, 1);
-    currentNode.closed = true;
+
+    openList.splice(lowIdx, 1);
+    currentNode.isClosed = true;
 
     const neighbors = getNeighbors(grid, currentNode);
 
     for (let i = 0; i < neighbors.length; i += 1) {
       const neighbor = neighbors[i];
 
-      if (!neighbor.closed && neighbor.type !== OBSTACLE_TILE) {
+      if (!neighbor.isClosed && neighbor.type !== OBSTACLE_TILE) {
         const gScore = currentNode.g + 1;
-        let gScoreIsBest = false;
+        let isBestScore = false;
 
         if (!neighbor.visited) {
-          gScoreIsBest = true;
+          isBestScore = true;
           neighbor.h = getManhattanDistance(neighbor, end);
-          neighbor.visited = true;
+          neighbor.isVisited = true;
           openList.push(neighbor);
         } else if (gScore < neighbor.g) {
-          gScoreIsBest = true;
+          isBestScore = true;
         }
 
-        if (gScoreIsBest) {
+        if (isBestScore) {
           neighbor.parent = currentNode;
           neighbor.g = gScore;
           neighbor.f = neighbor.g + neighbor.h;

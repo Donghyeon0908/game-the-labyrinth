@@ -1,6 +1,7 @@
 const mapSlice = (set) => ({
   tilesImageData: {},
   isMap: false,
+  shortestPath: [],
   mapData: [
     [2, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -25,6 +26,11 @@ const mapSlice = (set) => ({
   setIsMap: (payload) =>
     set(() => ({
       isMap: payload,
+    })),
+
+  setShortestPath: (payload) =>
+    set(() => ({
+      shortestPath: payload,
     })),
 });
 
