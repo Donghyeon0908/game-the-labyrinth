@@ -2,6 +2,7 @@ const characterSlice = (set) => ({
   x: null,
   y: null,
   moveCount: 0,
+  startingPoint: null,
   characterImg: null,
   isSuccess: true,
   moveType: "",
@@ -22,11 +23,17 @@ const characterSlice = (set) => ({
     set(() => ({
       x: payload[1],
       y: payload[0],
+      startingPoint: payload,
+    })),
+
+  setMoveCount: (payload) =>
+    set(() => ({
+      moveCount: payload,
     })),
 
   setIsSuccess: (payload) =>
     set(() => ({
-      isSuccess: false,
+      isSuccess: payload,
     })),
 
   getCharacterMoveType: (payload) =>

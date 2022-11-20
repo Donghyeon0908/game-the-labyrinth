@@ -11,7 +11,7 @@ function GameController() {
 
   useEffect(() => {
     if (
-      !!curPosition[0] &&
+      curPosition[0] !== null &&
       JSON.stringify(curPosition) !== JSON.stringify(shortestPath[moveCount])
     ) {
       setIsSuccess(false);
