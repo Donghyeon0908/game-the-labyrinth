@@ -14,6 +14,10 @@ function GameContext({ children }) {
     mapData,
     getCharacterMoveType,
     isSuccess,
+    startingPoint,
+    setIsSuccess,
+    setStaringPosition,
+    setMoveCount,
   } = useStore((state) => ({
     move: state.move,
     characterX: state.x,
@@ -21,6 +25,10 @@ function GameContext({ children }) {
     mapData: state.mapData,
     getCharacterMoveType: state.getCharacterMoveType,
     isSuccess: state.isSuccess,
+    startingPoint: state.startingPoint,
+    setIsSuccess: state.setIsSuccess,
+    setStaringPosition: state.setStaringPosition,
+    setMoveCount: state.setMoveCount,
   }));
   const canvasRef = useRef(null);
   const ref = useRef();
@@ -29,11 +37,10 @@ function GameContext({ children }) {
   const [isUpdateRequired, setIsUpdateRequired] = useState(false);
   const width = MAP_SIZE.COLS * TILE_SIZE;
   const height = MAP_SIZE.ROWS * TILE_SIZE;
-  console.log(isSuccess);
   const moveCharacter = useCallback(
     (event) => {
       const { key } = event;
-      if (KEYBOARD_MOVE[key]) {
+      if (KEYBOARD_MOVE[key] && isSuccess) {
         getCharacterMoveType(getMoveType(key));
         const [x, y] = KEYBOARD_MOVE[key];
         if (!checkMapCollision(characterX + x, characterY + y, mapData)) {
@@ -42,8 +49,27 @@ function GameContext({ children }) {
           move([x, y]);
         }
       }
+
+      if (!isSuccess) {
+        setMoveCount(0);
+        setIsSuccess(true);
+        setIsUpdateRequired(true);
+        setIsRender(false);
+        setStaringPosition(startingPoint);
+      }
     },
-    [move, characterX, characterY, mapData, getCharacterMoveType]
+    [
+      move,
+      characterX,
+      characterY,
+      mapData,
+      getCharacterMoveType,
+      isSuccess,
+      startingPoint,
+      setIsSuccess,
+      setStaringPosition,
+      setMoveCount,
+    ]
   );
 
   const tick = useCallback(() => {

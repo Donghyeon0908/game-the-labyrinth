@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import useStore from "../../store/useStore";
 import Graph from "../../utils/graph";
 import { getStartingEndPoint } from "../../utils/utils";
-import AStar from "../../utils/AStar";
+import AStar from "../../utils/Astar";
 
 function GameInitSetting() {
   const mapData = useStore((state) => state.mapData);
