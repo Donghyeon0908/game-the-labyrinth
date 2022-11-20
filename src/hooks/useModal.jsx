@@ -8,9 +8,13 @@ function useModal(initialState = false) {
     setIsOpenModal(!isOpenModal);
   };
 
-  const customModal = ({ children }) => {
+  const customModal = ({ animation, children }) => {
     return (
-      <Modal isOpenModal={isOpenModal} handleIsOpenModal={setIsOpenModal}>
+      <Modal
+        animation={animation}
+        isOpenModal={isOpenModal}
+        handleIsOpenModal={setIsOpenModal}
+      >
         {children}
       </Modal>
     );

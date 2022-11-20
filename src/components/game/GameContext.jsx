@@ -2,45 +2,75 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import useStore from "../../store/useStore";
 import { MAP_SIZE, TILE_SIZE, KEYBOARD_MOVE } from "../../constants/constants";
-import { checkMapCollision } from "../../utils/collision";
+import checkMapCollision from "../../utils/collision";
 import CanvasContext from "./CanvasContext";
 
 function GameContext({ children }) {
-  const { characterX, characterY, move, mapData } = useStore((state) => ({
-    move: state.move,
-    characterX: state.x,
-    characterY: state.y,
-    mapData: state.mapData,
-  }));
+  const { characterX, characterY, move, mapData, getCharacterMoveType } =
+    useStore((state) => ({
+      move: state.move,
+      characterX: state.x,
+      characterY: state.y,
+      mapData: state.mapData,
+      getCharacterMoveType: state.getCharacterMoveType,
+    }));
   const canvasRef = useRef(null);
   const ref = useRef();
   const [ctx, setCtx] = useState(null);
-  const [isVisible, setIsVisible] = useState(true);
+  const [isRender, setIsRender] = useState(true);
   const [isUpdateRequired, setIsUpdateRequired] = useState(false);
   const width = MAP_SIZE.COLS * TILE_SIZE;
   const height = MAP_SIZE.ROWS * TILE_SIZE;
+
+  const getMoveType = (key) => {
+    let type = "";
+
+    switch (key) {
+      case "w":
+      case "ㅈ":
+        type = "up";
+        break;
+      case "a":
+      case "ㅁ":
+        type = "left";
+        break;
+      case "d":
+      case "ㅇ":
+        type = "right";
+        break;
+      case "s":
+      case "ㄴ":
+        type = "down";
+        break;
+      default:
+        type = "";
+    }
+
+    return type;
+  };
 
   const moveCharacter = useCallback(
     (event) => {
       const { key } = event;
       if (KEYBOARD_MOVE[key]) {
+        getCharacterMoveType(getMoveType(key));
         const [x, y] = KEYBOARD_MOVE[key];
         if (!checkMapCollision(characterX + x, characterY + y, mapData)) {
           setIsUpdateRequired(true);
-          setIsVisible(false);
+          setIsRender(false);
           move([x, y]);
         }
       }
     },
-    [move, characterX, characterY, mapData]
+    [move, characterX, characterY, mapData, getCharacterMoveType]
   );
 
   const tick = useCallback(() => {
     if (isUpdateRequired) {
-      setIsVisible(true);
+      setIsRender(true);
       setIsUpdateRequired(false);
     }
-  }, [isUpdateRequired, setIsVisible, setIsUpdateRequired]);
+  }, [isUpdateRequired, setIsRender, setIsUpdateRequired]);
 
   useEffect(() => {
     setCtx(canvasRef.current.getContext("2d"));
@@ -59,10 +89,11 @@ function GameContext({ children }) {
       document.removeEventListener("keypress", moveCharacter);
     };
   }, [moveCharacter]);
+
   return (
     <CanvasContext.Provider value={ctx}>
       <canvas ref={canvasRef} width={width} height={height} />
-      {isVisible && children}
+      {isRender && children}
     </CanvasContext.Provider>
   );
 }

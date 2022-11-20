@@ -5,6 +5,7 @@ import CanvasContext from "./CanvasContext";
 
 function Grid({ width, height, children }) {
   const ctx = useContext(CanvasContext);
+
   useEffect(() => {
     for (let i = 0; i < height; i += 1) {
       const y = i * TILE_SIZE;

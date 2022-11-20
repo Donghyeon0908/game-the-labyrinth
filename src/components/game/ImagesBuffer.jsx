@@ -5,10 +5,11 @@ import { styled } from "@stitches/react";
 import useStore from "../../store/useStore";
 import { MAP_TILES } from "../../constants/constants";
 
-function ImagesBuffer(props) {
+function ImagesBuffer() {
   const { setBufferImage } = useStore((state) => ({
     setBufferImage: state.setBufferImage,
   }));
+
   return (
     <ImageBuffer>
       {Object.keys(MAP_TILES).map((key) => {

@@ -21,10 +21,16 @@ export const KEYBOARD_MOVE = {
   a: [-1, 0],
   s: [0, 1],
   d: [1, 0],
+  ㅈ: [0, -1],
+  ㅁ: [-1, 0],
+  ㄴ: [0, 1],
+  ㅇ: [1, 0],
 };
 
-export const SOLID_TILE = 4;
+export const OBSTACLE_TILE = 4;
 
 export const CHARACTER_SPRITE = "assets/images/defaultPlayer.png";
+
+export const CHARACTER_SPRITE_RIGHT = "assets/images/right-single.png";
 
 export const CHARACTER_SIZE = 50;
