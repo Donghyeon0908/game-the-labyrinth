@@ -16,9 +16,12 @@ function Map() {
   const { COLS, ROWS } = MAP_SIZE;
   const map = new Graph(mapData);
   const [start, end] = getStartingEndPoint(mapData);
-  console.log(
-    AStar(map.nodes, map.nodes[start[0]][start[1]], map.nodes[end[0]][end[1]])
+  const aa = AStar(
+    map.nodes,
+    map.nodes[start[0]][start[1]],
+    map.nodes[end[0]][end[1]]
   );
+  console.log(aa);
   useEffect(() => {
     const drawLayer = (grid) => {
       for (let i = 0; i < ROWS; i += 1) {

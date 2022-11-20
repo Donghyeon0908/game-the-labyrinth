@@ -1,20 +1,7 @@
 import { OBSTACLE_TILE } from "../constants/constants";
 
-const getManhattanDistance = (pos0, pos1) => {
-  return Math.abs(pos1.x - pos0.x) + Math.abs(pos1.y - pos0.y);
-};
-
-const getGridInit = (grid) => {
-  for (let x = 0; x < grid.length; x += 1) {
-    for (let y = 0; y < grid[x].length; y += 1) {
-      grid[x][y].f = 0;
-      grid[x][y].g = 0;
-      grid[x][y].h = 0;
-      grid[x][y].visited = false;
-      grid[x][y].closed = false;
-      grid[x][y].parent = null;
-    }
-  }
+const getManhattanDistance = (from, to) => {
+  return Math.abs(from.x - to.x) + Math.abs(from.y - to.y);
 };
 
 const getNeighbors = (grid, node) => {
@@ -36,8 +23,8 @@ const getNeighbors = (grid, node) => {
 };
 
 const AStar = (grid, start, end) => {
-  getGridInit(grid);
   const openList = [];
+  const result = [];
   openList.push(start);
   while (openList.length > 0) {
     let lowInd = 0;
@@ -50,12 +37,13 @@ const AStar = (grid, start, end) => {
 
     if (currentNode === end) {
       let cur = currentNode;
-      const ret = [];
+
       while (cur.parent) {
-        ret.push(cur);
+        result.push(cur);
         cur = cur.parent;
       }
-      return ret.reverse();
+
+      return result.reverse();
     }
     openList.splice(lowInd, 1);
     currentNode.closed = true;
@@ -71,7 +59,7 @@ const AStar = (grid, start, end) => {
 
         if (!neighbor.visited) {
           gScoreIsBest = true;
-          neighbor.h = getManhattanDistance(neighbor.pos, end.pos);
+          neighbor.h = getManhattanDistance(neighbor, end);
           neighbor.visited = true;
           openList.push(neighbor);
         } else if (gScore < neighbor.g) {
@@ -86,6 +74,7 @@ const AStar = (grid, start, end) => {
       }
     }
   }
+
   return [];
 };
 
