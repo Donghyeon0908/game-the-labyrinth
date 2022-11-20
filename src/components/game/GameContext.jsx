@@ -4,16 +4,24 @@ import useStore from "../../store/useStore";
 import { MAP_SIZE, TILE_SIZE, KEYBOARD_MOVE } from "../../constants/constants";
 import checkMapCollision from "../../utils/collision";
 import CanvasContext from "./CanvasContext";
+import { getMoveType } from "../../utils/utils";
 
 function GameContext({ children }) {
-  const { characterX, characterY, move, mapData, getCharacterMoveType } =
-    useStore((state) => ({
-      move: state.move,
-      characterX: state.x,
-      characterY: state.y,
-      mapData: state.mapData,
-      getCharacterMoveType: state.getCharacterMoveType,
-    }));
+  const {
+    characterX,
+    characterY,
+    move,
+    mapData,
+    getCharacterMoveType,
+    isSuccess,
+  } = useStore((state) => ({
+    move: state.move,
+    characterX: state.x,
+    characterY: state.y,
+    mapData: state.mapData,
+    getCharacterMoveType: state.getCharacterMoveType,
+    isSuccess: state.isSuccess,
+  }));
   const canvasRef = useRef(null);
   const ref = useRef();
   const [ctx, setCtx] = useState(null);
@@ -21,34 +29,7 @@ function GameContext({ children }) {
   const [isUpdateRequired, setIsUpdateRequired] = useState(false);
   const width = MAP_SIZE.COLS * TILE_SIZE;
   const height = MAP_SIZE.ROWS * TILE_SIZE;
-
-  const getMoveType = (key) => {
-    let type = "";
-
-    switch (key) {
-      case "w":
-      case "ㅈ":
-        type = "up";
-        break;
-      case "a":
-      case "ㅁ":
-        type = "left";
-        break;
-      case "d":
-      case "ㅇ":
-        type = "right";
-        break;
-      case "s":
-      case "ㄴ":
-        type = "down";
-        break;
-      default:
-        type = "";
-    }
-
-    return type;
-  };
-
+  console.log(isSuccess);
   const moveCharacter = useCallback(
     (event) => {
       const { key } = event;
