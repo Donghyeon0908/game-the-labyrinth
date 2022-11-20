@@ -2,6 +2,7 @@ export const BUTTON_NAME = {
   GUIDE: "Game Guide",
   START: "Game Start",
 };
+
 export const TILE_SIZE = 64;
 
 export const MAP_SIZE = {
@@ -34,3 +35,5 @@ export const CHARACTER_SPRITE = "assets/images/defaultPlayer.png";
 export const CHARACTER_SPRITE_RIGHT = "assets/images/right-single.png";
 
 export const CHARACTER_SIZE = 50;
+
+export const RANDOM_TILES = [1, 4];
