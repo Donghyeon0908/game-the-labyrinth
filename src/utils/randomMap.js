@@ -27,7 +27,7 @@ const getMapData = () => {
     graph.nodes[end[0]][end[1]]
   );
 
-  return path.length ? mapData : getMapData();
+  return path.length >= 20 ? mapData : getMapData();
 };
 
 export default getMapData;

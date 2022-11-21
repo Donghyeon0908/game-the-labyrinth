@@ -18,15 +18,10 @@ function GameInitSetting() {
     graph.nodes[start[0]][start[1]],
     graph.nodes[end[0]][end[1]]
   );
-
   const shortestPathPosition = useMemo(() => {
     return shortestPath.map((index) => index.position);
   }, [shortestPath]);
-
-  useEffect(() => {
-    setMapData(mapData);
-  }, [mapData, setMapData]);
-
+  console.log(shortestPathPosition);
   useEffect(() => {
     setShortestPath([start, ...shortestPathPosition]);
   }, [setShortestPath, shortestPathPosition, start]);
@@ -34,6 +29,10 @@ function GameInitSetting() {
   useEffect(() => {
     setStaringPosition(start);
   }, [setStaringPosition, start]);
+
+  useEffect(() => {
+    setMapData(mapData);
+  }, [mapData, setMapData]);
 
   return null;
 }

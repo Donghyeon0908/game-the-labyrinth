@@ -32,7 +32,19 @@ export const OBSTACLE_TILE = 4;
 
 export const CHARACTER_SPRITE = "assets/images/defaultPlayer.png";
 
-export const CHARACTER_SPRITE_RIGHT = "assets/images/right-single.png";
+export const CHARACTER_SPRITE_LEFT = "assets/images/left-move2.png";
+
+export const CHARACTER_SPRITE_RIGHT = {
+  MOVE1: "assets/images/rightmove-1.png",
+};
+
+export const CHARACTER_SPRITE_DIE = {
+  MOVE1: "assets/images/die-1.png",
+  MOVE2: "assets/images/die-2.png",
+  MOVE3: "assets/images/die-3.png",
+  MOVE4: "assets/images/die-4.png",
+  MOVE5: "assets/images/die-5.png",
+};
 
 export const CHARACTER_SIZE = 50;
 

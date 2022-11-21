@@ -11,7 +11,6 @@ function GameMapRenderer() {
     mapData: state.mapData,
   }));
   const { COLS, ROWS } = MAP_SIZE;
-
   useEffect(() => {
     const drawLayer = (grid) => {
       for (let i = 0; i < ROWS; i += 1) {

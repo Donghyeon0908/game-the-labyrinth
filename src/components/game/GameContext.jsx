@@ -37,6 +37,7 @@ function GameContext({ children }) {
   const [isUpdateRequired, setIsUpdateRequired] = useState(false);
   const width = MAP_SIZE.COLS * TILE_SIZE;
   const height = MAP_SIZE.ROWS * TILE_SIZE;
+
   const moveCharacter = useCallback(
     (event) => {
       const { key } = event;
@@ -77,6 +78,7 @@ function GameContext({ children }) {
       setIsRender(true);
       setIsUpdateRequired(false);
     }
+    ref.current = requestAnimationFrame(tick);
   }, [isUpdateRequired, setIsRender, setIsUpdateRequired]);
 
   useEffect(() => {
