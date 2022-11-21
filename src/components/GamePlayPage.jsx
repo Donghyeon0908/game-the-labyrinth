@@ -9,6 +9,7 @@ import GameInitSetting from "./game/GameInitSetting";
 import GamePathComparisonController from "./game/GamePathComparisonController";
 import useStore from "../store/useStore";
 import useModal from "../hooks/useModal";
+import HintButton from "./game/HintButton";
 
 function GamePlayPage() {
   const isClear = useStore((state) => state.isClear);
@@ -25,6 +26,7 @@ function GamePlayPage() {
   return (
     <>
       <ClearModal>성공</ClearModal>
+      <HintButton />
       <GameContainer>
         <GameInitSetting />
         <GamePathComparisonController />

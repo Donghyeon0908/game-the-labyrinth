@@ -4,6 +4,7 @@ const mapSlice = (set) => ({
   shortestPath: [],
   mapData: null,
   isClear: false,
+  isHint: false,
 
   setBufferImage: (payload) =>
     set((state) => ({
@@ -31,6 +32,11 @@ const mapSlice = (set) => ({
   setIsClear: (payload) =>
     set(() => ({
       isClear: payload,
+    })),
+
+  setIsHint: (payload) =>
+    set(() => ({
+      isHint: payload,
     })),
 });
 
