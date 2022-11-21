@@ -11,7 +11,7 @@ import {
 import useStore from "../../store/useStore";
 import CanvasContext from "./CanvasContext";
 
-function Character() {
+function CharacterRenderer() {
   const ctx = useContext(CanvasContext);
   const { x, y, characterImg, setBufferCharacterImage, moveType } = useStore(
     (state) => ({
@@ -66,4 +66,4 @@ const ImageBuffer = styled("img", {
   display: "none",
 });
 
-export default Character;
+export default CharacterRenderer;

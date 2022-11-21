@@ -6,7 +6,7 @@ export const BUTTON_NAME = {
 export const TILE_SIZE = 64;
 
 export const MAP_SIZE = {
-  COLS: 10,
+  COLS: 15,
   ROWS: 10,
 };
 
@@ -37,3 +37,16 @@ export const CHARACTER_SPRITE_RIGHT = "assets/images/right-single.png";
 export const CHARACTER_SIZE = 50;
 
 export const RANDOM_TILES = [1, 4];
+
+export const DEFAULT_MAPDATA = [
+  [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 4, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 4, 4, 1, 1, 4, 4, 1, 1, 1, 1, 1, 1, 1],
+  [1, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1],
+  [1, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1],
+  [1, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1],
+  [1, 1, 4, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 3],
+];

@@ -4,11 +4,11 @@ import useStore from "../../store/useStore";
 import CanvasContext from "./CanvasContext";
 import { MAP_SIZE, MAP_TILES, TILE_SIZE } from "../../constants/constants";
 import Grid from "./Grid";
-import Map from "./Map";
+import GameMapRenderer from "./GameMapRenderer";
 import ImagesBuffer from "./ImagesBuffer";
-import Character from "./Character";
+import CharacterRenderer from "./CharacterRenderer";
 
-function View() {
+function GameView() {
   const width = MAP_SIZE.COLS * TILE_SIZE;
   const height = MAP_SIZE.ROWS * TILE_SIZE;
   const ctx = useContext(CanvasContext);
@@ -26,12 +26,12 @@ function View() {
       <ImagesBuffer />
       {Object.keys(tilesImageData).length === Object.keys(MAP_TILES).length && (
         <Grid width={width} height={height}>
-          <Map />
+          <GameMapRenderer />
         </Grid>
       )}
-      {isMap && <Character />}
+      {isMap && <CharacterRenderer />}
     </>
   );
 }
 
-export default View;
+export default GameView;

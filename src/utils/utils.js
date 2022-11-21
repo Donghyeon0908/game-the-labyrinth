@@ -1,9 +1,11 @@
+import { MAP_SIZE } from "../constants/constants";
+
 export const getStartingEndPoint = (mapData) => {
   const startingPoint = [];
   const endPoint = [];
 
-  for (let i = 0; i < mapData.length; i += 1) {
-    for (let j = 0; j < mapData.length; j += 1) {
+  for (let i = 0; i < MAP_SIZE.ROWS; i += 1) {
+    for (let j = 0; j < MAP_SIZE.COLS; j += 1) {
       if (mapData[i][j] === 2) {
         endPoint.push(i, j);
       }

@@ -7,6 +7,7 @@ function GameController() {
   const shortestPath = useStore((state) => state.shortestPath);
   const moveCount = useStore((state) => state.moveCount);
   const setIsSuccess = useStore((state) => state.setIsSuccess);
+  const setIsClear = useStore((state) => state.setIsClear);
   const curPosition = useMemo(() => [playerY, playerX], [playerY, playerX]);
 
   useEffect(() => {
@@ -17,6 +18,15 @@ function GameController() {
       setIsSuccess(false);
     }
   }, [moveCount, shortestPath, curPosition, setIsSuccess]);
+
+  useEffect(() => {
+    if (
+      JSON.stringify(curPosition) ===
+      JSON.stringify(shortestPath[shortestPath.length - 1])
+    ) {
+      setIsClear(true);
+    }
+  }, [curPosition, setIsClear, shortestPath]);
 
   return null;
 }

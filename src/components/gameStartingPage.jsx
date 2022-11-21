@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { styled } from "@stitches/react";
 
 import backgroundImage from "../assets/images/initImage.png";
-import GameStartingPageHeader from "./gameStartingPageHeader";
+import GameStartingPageHeader from "./header/GameStartingPageHeader";
 import Button from "./button/Button";
 import useModal from "../hooks/useModal";
 import { BUTTON_NAME } from "../constants/constants";

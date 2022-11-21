@@ -7,14 +7,14 @@ function Grid({ width, height, children }) {
   const ctx = useContext(CanvasContext);
 
   useEffect(() => {
-    for (let i = 0; i < height; i += 1) {
+    for (let i = 0; i < width; i += 1) {
       const y = i * TILE_SIZE;
       ctx.beginPath();
       ctx.moveTo(0, y);
       ctx.lineTo(width, y);
       ctx.stroke();
     }
-    for (let j = 0; j < width; j += 1) {
+    for (let j = 0; j < height; j += 1) {
       const x = j * TILE_SIZE;
       ctx.beginPath();
       ctx.moveTo(x, 0);
