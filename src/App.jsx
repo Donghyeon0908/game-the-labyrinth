@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-import GameStartingPage from "./components/gameStartingPage";
-import GameView from "./components/gameView";
+import GameStartingPage from "./components/GameStartingPage";
+import GamePlayPage from "./components/GamePlayPage";
 import Music from "./components/game/Music";
 import GlobalStyle from "./GlobalStyle";
 
@@ -13,7 +13,7 @@ function App() {
       <Music />
       <Routes>
         <Route path="/" element={<GameStartingPage />} />
-        <Route path="/game" element={<GameView />} />
+        <Route path="/game" element={<GamePlayPage />} />
       </Routes>
     </>
   );

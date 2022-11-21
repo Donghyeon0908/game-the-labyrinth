@@ -5,7 +5,7 @@ const isObstacleTile = (x, y, mapData) => {
 };
 
 const isMapEdge = (x, y) => {
-  return x < 0 || x >= MAP_SIZE.COLS || y < 0 || y >= MAP_SIZE.ROWS;
+  return x < 0 || x >= MAP_SIZE.COLS || y < 0 || y >= MAP_SIZE.COLS;
 };
 
 const checkMapCollision = (x, y, mapData) => {

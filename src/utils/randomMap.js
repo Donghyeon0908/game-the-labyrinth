@@ -1,17 +1,24 @@
-import { RANDOM_TILES } from "../constants/constants";
-import AStar from "./Astar";
-import Graph from "./graph";
+import {
+  RANDOM_TILES,
+  MAP_SIZE,
+  DEFAULT_MAPDATA,
+} from "../constants/constants";
+import AStar from "./AStar";
+import Graph from "./Graph";
 import { getStartingEndPoint } from "./utils";
 
-const getMapData = (mapData) => {
-  const newMap = mapData.map((array) => {
-    return array.map((indx) => {
-      return indx === 2 || indx === 3
-        ? indx
-        : RANDOM_TILES[Math.round(Math.random())];
+const { COLS } = MAP_SIZE;
+
+const getMapData = () => {
+  const mapData = DEFAULT_MAPDATA.map((rows) => {
+    return rows.map(() => {
+      return RANDOM_TILES[Math.round(Math.random())];
     });
   });
-  const graph = new Graph(newMap);
+  mapData[0][Math.floor(Math.random() * COLS)] = 2;
+  mapData[9][Math.floor(Math.random() * COLS)] = 3;
+
+  const graph = new Graph(mapData);
   const [start, end] = getStartingEndPoint(mapData);
 
   const path = AStar(
@@ -20,7 +27,7 @@ const getMapData = (mapData) => {
     graph.nodes[end[0]][end[1]]
   );
 
-  return path.length ? newMap : getMapData(mapData);
+  return path.length ? mapData : getMapData();
 };
 
 export default getMapData;

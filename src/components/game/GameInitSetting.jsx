@@ -1,12 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 
 import useStore from "../../store/useStore";
-import Graph from "../../utils/graph";
+import Graph from "../../utils/Graph";
 import { getStartingEndPoint } from "../../utils/utils";
-import AStar from "../../utils/Astar";
+import AStar from "../../utils/AStar";
+import getMapData from "../../utils/randomMap";
 
 function GameInitSetting() {
-  const mapData = useStore((state) => state.mapData);
+  const mapData = getMapData();
+  const setMapData = useStore((state) => state.setMapData);
   const setShortestPath = useStore((state) => state.setShortestPath);
   const setStaringPosition = useStore((state) => state.setStaringPosition);
   const graph = new Graph(mapData);
@@ -16,7 +18,14 @@ function GameInitSetting() {
     graph.nodes[start[0]][start[1]],
     graph.nodes[end[0]][end[1]]
   );
-  const shortestPathPosition = shortestPath.map((index) => index.position);
+
+  const shortestPathPosition = useMemo(() => {
+    return shortestPath.map((index) => index.position);
+  }, [shortestPath]);
+
+  useEffect(() => {
+    setMapData(mapData);
+  }, [mapData, setMapData]);
 
   useEffect(() => {
     setShortestPath([start, ...shortestPathPosition]);

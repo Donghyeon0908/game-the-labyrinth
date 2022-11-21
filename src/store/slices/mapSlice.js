@@ -2,18 +2,8 @@ const mapSlice = (set) => ({
   tilesImageData: {},
   isMap: false,
   shortestPath: [],
-  mapData: [
-    [2, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 1, 1, 4, 1, 1, 4, 1, 1, 1],
-    [1, 1, 4, 4, 1, 1, 4, 4, 1, 1],
-    [1, 4, 4, 4, 4, 4, 4, 4, 4, 1],
-    [1, 4, 4, 4, 4, 4, 4, 4, 4, 1],
-    [1, 4, 4, 4, 4, 4, 4, 4, 4, 1],
-    [1, 1, 4, 4, 4, 4, 4, 4, 1, 1],
-    [1, 1, 1, 4, 4, 4, 4, 1, 1, 1],
-    [1, 1, 1, 1, 4, 4, 1, 1, 1, 3],
-  ],
+  mapData: null,
+  isClear: false,
 
   setBufferImage: (payload) =>
     set((state) => ({
@@ -31,6 +21,16 @@ const mapSlice = (set) => ({
   setShortestPath: (payload) =>
     set(() => ({
       shortestPath: payload,
+    })),
+
+  setMapData: (payload) =>
+    set(() => ({
+      mapData: payload,
+    })),
+
+  setIsClear: (payload) =>
+    set(() => ({
+      isClear: payload,
     })),
 });
 

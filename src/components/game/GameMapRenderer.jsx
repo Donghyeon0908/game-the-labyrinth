@@ -4,7 +4,7 @@ import useStore from "../../store/useStore";
 import CanvasContext from "./CanvasContext";
 import { MAP_SIZE, TILE_SIZE } from "../../constants/constants";
 
-function Map() {
+function GameMapRenderer() {
   const ctx = useContext(CanvasContext);
   const { setIsMap, mapData } = useStore((state) => ({
     setIsMap: state.setIsMap,
@@ -36,6 +36,7 @@ function Map() {
         }
       }
     };
+
     drawLayer(mapData);
     setIsMap(true);
   }, [COLS, ROWS, ctx, setIsMap, mapData]);
@@ -43,4 +44,4 @@ function Map() {
   return null;
 }
 
-export default Map;
+export default GameMapRenderer;
