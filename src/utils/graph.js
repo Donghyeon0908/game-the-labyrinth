@@ -18,6 +18,7 @@ export default function Graph(grid) {
   for (let x = 0; x < grid.length; x += 1) {
     row = grid[x];
     nodes[x] = Array.from({ length: row.length });
+
     for (let y = 0; y < row.length; y += 1) {
       nodes[x][y] = new Node(x, y, row[y]);
     }

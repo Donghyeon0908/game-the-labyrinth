@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { styled } from "@stitches/react";
 
 import BGM from "../../assets/audios/enigmatic.mp3";
+import fail from "../../assets/audios/fail.mp3";
+import success from "../../assets/audios/success.mp3";
+import useStore from "../../store/useStore";
 
 function Music() {
+  const isSuccess = useStore((state) => state.isSuccess);
+  const isClear = useStore((state) => state.isClear);
   const audio = new Audio(BGM);
   const startMusic = () => {
     audio.play();
@@ -12,6 +17,22 @@ function Music() {
   const stopMusic = () => {
     audio.pause();
   };
+
+  useEffect(() => {
+    const failSound = new Audio(fail);
+
+    if (!isSuccess) {
+      failSound.play();
+    }
+  }, [isSuccess]);
+
+  useEffect(() => {
+    const successSound = new Audio(success);
+
+    if (isClear) {
+      successSound.play();
+    }
+  }, [isClear]);
 
   return (
     <>
