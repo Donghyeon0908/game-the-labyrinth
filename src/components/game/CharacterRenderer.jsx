@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 
 import { styled } from "@stitches/react";
 
@@ -14,15 +14,23 @@ import CanvasContext from "./CanvasContext";
 
 function CharacterRenderer() {
   const ctx = useContext(CanvasContext);
-  const { x, y, characterImg, setBufferCharacterImage, moveType, isSuccess } =
-    useStore((state) => ({
-      characterImg: state.characterImg,
-      x: state.x,
-      y: state.y,
-      setBufferCharacterImage: state.setBufferCharacterImage,
-      moveType: state.moveType,
-      isSuccess: state.isSuccess,
-    }));
+  const {
+    x,
+    y,
+    characterImg,
+    setBufferCharacterImage,
+    moveType,
+    isSuccess,
+    isHint,
+  } = useStore((state) => ({
+    characterImg: state.characterImg,
+    x: state.x,
+    y: state.y,
+    setBufferCharacterImage: state.setBufferCharacterImage,
+    moveType: state.moveType,
+    isSuccess: state.isSuccess,
+    isHint: state.isHint,
+  }));
 
   useEffect(() => {
     if (characterImg) {
@@ -55,7 +63,7 @@ function CharacterRenderer() {
         );
       }
     }
-  }, [ctx, characterImg, x, y, moveType, isSuccess]);
+  }, [ctx, characterImg, x, y, moveType, isSuccess, isHint]);
 
   return (
     <>

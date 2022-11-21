@@ -15,6 +15,7 @@ export const MAP_TILES = {
   2: "assets/images/2.png",
   3: "assets/images/3.png",
   4: "assets/images/4.png",
+  5: "assets/images/5.png",
 };
 
 export const KEYBOARD_MOVE = {
