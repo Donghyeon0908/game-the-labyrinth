@@ -1,6 +1,7 @@
 export const BUTTON_NAME = {
   GUIDE: "Game Guide",
   START: "Game Start",
+  BACK: "처음화면으로",
 };
 
 export const TILE_SIZE = 64;
