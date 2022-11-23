@@ -9,8 +9,8 @@ import GameInitSetting from "./game/GameInitSetting";
 import GamePathComparisonController from "./game/GamePathComparisonController";
 import useStore from "../store/useStore";
 import useModal from "../hooks/useModal";
-import HintButton from "./game/HintButton";
-import ClearMessage from "./message/ClearMessage";
+import HintButton from "./buttons/HintButton";
+import ClearMessage from "./messages/ClearMessage";
 
 function GamePlayPage() {
   const isClear = useStore((state) => state.isClear);

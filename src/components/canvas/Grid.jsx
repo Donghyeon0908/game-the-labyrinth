@@ -14,6 +14,7 @@ function Grid({ width, height, children }) {
       ctx.lineTo(width, y);
       ctx.stroke();
     }
+
     for (let j = 0; j < height; j += 1) {
       const x = j * TILE_SIZE;
       ctx.beginPath();

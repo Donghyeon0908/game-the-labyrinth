@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import useStore from "../../store/useStore";
 import { MAP_SIZE, TILE_SIZE, KEYBOARD_MOVE } from "../../constants/constants";
 import checkMapCollision from "../../utils/collision";
-import CanvasContext from "./CanvasContext";
+import CanvasContext from "../canvas/CanvasContext";
 import { getMoveType } from "../../utils/utils";
 
 function GameContext({ children }) {
@@ -73,12 +73,12 @@ function GameContext({ children }) {
     ]
   );
 
-  const tick = useCallback(() => {
+  const step = useCallback(() => {
     if (isUpdateRequired) {
       setIsRender(true);
       setIsUpdateRequired(false);
     }
-    ref.current = requestAnimationFrame(tick);
+    ref.current = requestAnimationFrame(step);
   }, [isUpdateRequired, setIsRender, setIsUpdateRequired]);
 
   useEffect(() => {
@@ -86,11 +86,11 @@ function GameContext({ children }) {
   }, [setCtx]);
 
   useEffect(() => {
-    ref.current = requestAnimationFrame(tick);
+    ref.current = requestAnimationFrame(step);
     return () => {
       ref.current && cancelAnimationFrame(ref.current);
     };
-  }, [ref, tick]);
+  }, [ref, step]);
 
   useEffect(() => {
     document.addEventListener("keypress", moveCharacter);

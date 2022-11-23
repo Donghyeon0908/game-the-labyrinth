@@ -6,9 +6,7 @@ import useStore from "../../store/useStore";
 import { MAP_TILES, CHARACTER_SPRITE } from "../../constants/constants";
 
 function ImagesBuffer() {
-  const { setBufferImage } = useStore((state) => ({
-    setBufferImage: state.setBufferImage,
-  }));
+  const setBufferImage = useStore((state) => state.setBufferImage);
 
   return (
     <>

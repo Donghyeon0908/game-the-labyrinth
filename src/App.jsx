@@ -8,9 +8,10 @@ import GlobalStyle from "./GlobalStyle";
 import NotFoundPage from "./components/NotFoundPage";
 
 function App() {
+  GlobalStyle();
+
   return (
     <>
-      <GlobalStyle />
       <Music />
       <Routes>
         <Route path="/" element={<GameStartingPage />} />
