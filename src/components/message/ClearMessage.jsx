@@ -6,7 +6,7 @@ function ClearMessage() {
   return <MessageContainer>성공!</MessageContainer>;
 }
 
-const MessageContainer = styled("div", {
+const MessageContainer = styled("p", {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",

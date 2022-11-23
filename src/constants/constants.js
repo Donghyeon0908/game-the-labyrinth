@@ -32,12 +32,10 @@ export const KEYBOARD_MOVE = {
 
 export const OBSTACLE_TILE = 4;
 
-export const CHARACTER_SPRITE = "assets/images/defaultPlayer.png";
-
-export const CHARACTER_SPRITE_LEFT = "assets/images/left-move2.png";
-
-export const CHARACTER_SPRITE_RIGHT = {
-  MOVE1: "assets/images/rightmove-1.png",
+export const CHARACTER_SPRITE = {
+  DEFAULT: "assets/images/defaultPlayer.png",
+  RIGHT: "assets/images/rightmove-1.png",
+  DIE: "assets/images/die-5.png",
 };
 
 export const CHARACTER_SPRITE_DIE = {

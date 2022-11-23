@@ -9,6 +9,7 @@ import Button from "./button/Button";
 import useModal from "../hooks/useModal";
 import { BUTTON_NAME } from "../constants/constants";
 import { unfoldIn } from "../utils/animations";
+import GameGuideMessage from "./message/GameGuideMessage";
 
 function GameStartingPage() {
   const [GuideModal, handleModal] = useModal();
@@ -17,7 +18,9 @@ function GameStartingPage() {
   return (
     <GameStartingPageContainer>
       <GameStartingPageHeader />
-      <GuideModal animation={unfoldIn}>Game Guide</GuideModal>
+      <GuideModal animation={unfoldIn}>
+        <GameGuideMessage />
+      </GuideModal>
       <ButtonContainer>
         <Button onClick={handleModal} buttonName={BUTTON_NAME.GUIDE} />
         <Button
