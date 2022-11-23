@@ -21,7 +21,7 @@ function GameInitSetting() {
   const shortestPathPosition = useMemo(() => {
     return shortestPath.map((index) => index.position);
   }, [shortestPath]);
-  console.log(shortestPathPosition);
+
   useEffect(() => {
     setShortestPath([start, ...shortestPathPosition]);
   }, [setShortestPath, shortestPathPosition, start]);

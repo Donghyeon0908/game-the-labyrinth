@@ -57,7 +57,7 @@ const ModalInner = styled("div", {
   height: "50vh",
   maxWidth: "30rem",
   maxHeight: "40rem",
-  background: "#fff",
+  backgroundColor: "rgba(255,255,255,0.5)",
   borderRadius: "3px",
 });
 

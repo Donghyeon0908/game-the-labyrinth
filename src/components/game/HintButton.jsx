@@ -18,15 +18,17 @@ function HintButton() {
 }
 
 const ButtonWrapper = styled("button", {
-  margin: "0.2rem",
-  padding: "0.6rem",
-  borderRadius: "7px",
+  position: "relative",
+  margin: "0.1rem",
+  padding: "0.3rem",
+  top: "-40%",
+  borderRadius: "8px",
   backgroundColor: "#bfbbbc",
   boxShadow: `0 0.1em #636262`,
   color: "#636262",
   fontFamily: "dunggeunmo",
   textShadow: "-1px -1px ##000000, 1px 1px #fffff",
-  fontSize: "1.7vw",
+  fontSize: "0.8rem",
   cursor: "pointer",
 
   "&:hover": {
