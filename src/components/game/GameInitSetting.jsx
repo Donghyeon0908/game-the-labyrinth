@@ -18,6 +18,7 @@ function GameInitSetting() {
     graph.nodes[start[0]][start[1]],
     graph.nodes[end[0]][end[1]]
   );
+
   const shortestPathPosition = useMemo(() => {
     return shortestPath.map((index) => index.position);
   }, [shortestPath]);

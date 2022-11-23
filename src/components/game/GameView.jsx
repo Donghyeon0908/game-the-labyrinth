@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from "react";
 
 import useStore from "../../store/useStore";
-import CanvasContext from "./CanvasContext";
+import CanvasContext from "../canvas/CanvasContext";
 import { MAP_SIZE, MAP_TILES, TILE_SIZE } from "../../constants/constants";
-import Grid from "./Grid";
+import Grid from "../canvas/Grid";
 import GameMapRenderer from "./GameMapRenderer";
 import ImagesBuffer from "./ImagesBuffer";
 import CharacterRenderer from "./CharacterRenderer";

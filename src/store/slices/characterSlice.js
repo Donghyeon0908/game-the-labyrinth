@@ -3,14 +3,8 @@ const characterSlice = (set) => ({
   y: null,
   moveCount: 0,
   startingPoint: null,
-  characterImg: null,
   isSuccess: true,
   moveType: "",
-
-  setBufferCharacterImage: (payload) =>
-    set(() => ({
-      characterImg: payload,
-    })),
 
   move: (payload) =>
     set((state) => ({

@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 
 import { CHARACTER_SIZE, TILE_SIZE } from "../../constants/constants";
 import useStore from "../../store/useStore";
-import CanvasContext from "./CanvasContext";
+import CanvasContext from "../canvas/CanvasContext";
 
 function CharacterRenderer() {
   const ctx = useContext(CanvasContext);

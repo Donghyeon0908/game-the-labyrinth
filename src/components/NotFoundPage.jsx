@@ -5,7 +5,7 @@ import { styled } from "@stitches/react";
 
 import { BUTTON_NAME } from "../constants/constants";
 import backgroundImage from "../assets/images/404.png";
-import Button from "./button/Button";
+import Button from "./buttons/Button";
 
 function NotFoundPage() {
   const navigate = useNavigate();

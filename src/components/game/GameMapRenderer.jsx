@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 
 import useStore from "../../store/useStore";
-import CanvasContext from "./CanvasContext";
+import CanvasContext from "../canvas/CanvasContext";
 import { MAP_SIZE, TILE_SIZE } from "../../constants/constants";
 
 function GameMapRenderer() {

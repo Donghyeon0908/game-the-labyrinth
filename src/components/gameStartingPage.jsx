@@ -5,11 +5,11 @@ import { styled } from "@stitches/react";
 
 import backgroundImage from "../assets/images/initImage.png";
 import GameStartingPageHeader from "./header/GameStartingPageHeader";
-import Button from "./button/Button";
+import Button from "./buttons/Button";
 import useModal from "../hooks/useModal";
 import { BUTTON_NAME } from "../constants/constants";
 import { unfoldIn } from "../utils/animations";
-import GameGuideMessage from "./message/GameGuideMessage";
+import GameGuideMessage from "./messages/GameGuideMessage";
 
 function GameStartingPage() {
   const [GuideModal, handleModal] = useModal();

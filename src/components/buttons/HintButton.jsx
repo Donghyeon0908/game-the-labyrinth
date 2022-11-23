@@ -21,7 +21,7 @@ const ButtonWrapper = styled("button", {
   position: "relative",
   margin: "0.1rem",
   padding: "0.3rem",
-  top: "-40%",
+  top: "-35%",
   borderRadius: "8px",
   backgroundColor: "#bfbbbc",
   boxShadow: `0 0.1em #636262`,
