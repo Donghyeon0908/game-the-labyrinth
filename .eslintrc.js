@@ -25,6 +25,7 @@ module.exports = {
     "no-unused-vars": "warn",
     "react/prop-types": "off",
     "react/jsx-props-no-spreading": "off",
+    "react/react-in-jsx-scope": "off",
     "react/self-closing-comp": "off",
     "react/jsx-filename-extension": ["warn", { extensions: [".js", ".jsx"] }],
     "no-param-reassign": 0,

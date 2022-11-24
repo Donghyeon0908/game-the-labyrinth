@@ -43,7 +43,7 @@ const AStar = (grid, start, end) => {
       let cur = currentNode;
 
       while (cur.parent) {
-        result.push(cur);
+        result.push(cur.position);
         cur = cur.parent;
       }
 

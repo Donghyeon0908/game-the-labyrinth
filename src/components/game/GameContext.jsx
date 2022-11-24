@@ -7,9 +7,9 @@ import CanvasContext from "../canvas/CanvasContext";
 import { getMoveType } from "../../utils/utils";
 
 function GameContext({ children }) {
+  const characterX = useStore((state) => state.x);
+  const characterY = useStore((state) => state.y);
   const {
-    characterX,
-    characterY,
     move,
     mapData,
     getCharacterMoveType,
@@ -18,18 +18,7 @@ function GameContext({ children }) {
     setIsSuccess,
     setStaringPosition,
     setMoveCount,
-  } = useStore((state) => ({
-    move: state.move,
-    characterX: state.x,
-    characterY: state.y,
-    mapData: state.mapData,
-    getCharacterMoveType: state.getCharacterMoveType,
-    isSuccess: state.isSuccess,
-    startingPoint: state.startingPoint,
-    setIsSuccess: state.setIsSuccess,
-    setStaringPosition: state.setStaringPosition,
-    setMoveCount: state.setMoveCount,
-  }));
+  } = useStore();
   const canvasRef = useRef(null);
   const ref = useRef();
   const [ctx, setCtx] = useState(null);
