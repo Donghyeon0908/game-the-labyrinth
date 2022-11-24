@@ -4,7 +4,6 @@ import useStore from "../../store/useStore";
 import Graph from "../../utils/Graph";
 import { getStartingEndPoint } from "../../utils/utils";
 import AStar from "../../utils/AStar";
-import { DEFAULT_MAPDATA } from "../../constants/constants";
 
 import getMapData from "../../utils/randomMap";
 

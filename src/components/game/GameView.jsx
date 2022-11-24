@@ -5,7 +5,6 @@ import CanvasContext from "../canvas/CanvasContext";
 import { MAP_SIZE, MAP_TILES, TILE_SIZE } from "../../constants/constants";
 import Grid from "../canvas/Grid";
 import GameMapRenderer from "./GameMapRenderer";
-import ImagesBuffer from "./ImagesBuffer";
 import CharacterRenderer from "./CharacterRenderer";
 
 function GameView() {
@@ -20,7 +19,6 @@ function GameView() {
 
   return (
     <>
-      <ImagesBuffer />
       {Object.keys(tilesImageData).length === Object.keys(MAP_TILES).length && (
         <Grid width={width} height={height}>
           <GameMapRenderer />

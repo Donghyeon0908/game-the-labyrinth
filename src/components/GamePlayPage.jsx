@@ -11,6 +11,7 @@ import useStore from "../store/useStore";
 import useModal from "../hooks/useModal";
 import HintButton from "./buttons/HintButton";
 import ClearMessage from "./messages/ClearMessage";
+import ImagesBuffer from "./game/ImagesBuffer";
 
 function GamePlayPage() {
   const isClear = useStore((state) => state.isClear);
@@ -33,6 +34,7 @@ function GamePlayPage() {
         <HintButton />
         <GameInitSetting />
         <GamePathComparisonController />
+        <ImagesBuffer />
         <GameContext>
           <GameView />
         </GameContext>
