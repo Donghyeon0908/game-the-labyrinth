@@ -6,17 +6,9 @@ import { MAP_SIZE, TILE_SIZE } from "../../constants/constants";
 
 function GameMapRenderer() {
   const ctx = useContext(CanvasContext);
-  const { setIsMap, mapData, shortestPath, moveCount, isHint } = useStore(
-    (state) => ({
-      setIsMap: state.setIsMap,
-      mapData: state.mapData,
-      shortestPath: state.shortestPath,
-      moveCount: state.moveCount,
-      isHint: state.isHint,
-    })
-  );
-
+  const { setIsMap, mapData, shortestPath, moveCount, isHint } = useStore();
   const { COLS, ROWS } = MAP_SIZE;
+
   useEffect(() => {
     const drawLayer = (grid) => {
       for (let i = 0; i < ROWS; i += 1) {
@@ -45,6 +37,7 @@ function GameMapRenderer() {
     const drawHintLayer = () => {
       const x = shortestPath[moveCount + 1][1] * TILE_SIZE;
       const y = shortestPath[moveCount + 1][0] * TILE_SIZE;
+
       ctx.drawImage(
         document.querySelector(`#map-tile-5`),
         0,

@@ -12,10 +12,7 @@ function GameView() {
   const width = MAP_SIZE.COLS * TILE_SIZE;
   const height = MAP_SIZE.ROWS * TILE_SIZE;
   const ctx = useContext(CanvasContext);
-  const { tilesImageData, isMap } = useStore((state) => ({
-    tilesImageData: state.tilesImageData,
-    isMap: state.isMap,
-  }));
+  const { tilesImageData, isMap } = useStore();
 
   useEffect(() => {
     return () => !!ctx && ctx.clearRect(0, 0, ctx.width, ctx.height);

@@ -6,13 +6,11 @@ import CanvasContext from "../canvas/CanvasContext";
 
 function CharacterRenderer() {
   const ctx = useContext(CanvasContext);
-  const { x, y, moveType, isSuccess, isHint } = useStore((state) => ({
-    x: state.x,
-    y: state.y,
-    moveType: state.moveType,
-    isSuccess: state.isSuccess,
-    isHint: state.isHint,
-  }));
+  const x = useStore((state) => state.x);
+  const y = useStore((state) => state.y);
+  const moveType = useStore((state) => state.moveType);
+  const isSuccess = useStore((state) => state.isSuccess);
+  const isHint = useStore((state) => state.isHint);
 
   useEffect(() => {
     if (isSuccess && moveType === "right") {
