@@ -1,28 +1,59 @@
+import { OBSTACLE_TILE } from "../constants/constants";
+
+const cleanNode = (node) => {
+  node.f = 0;
+  node.g = 0;
+  node.h = 0;
+  node.isVisited = false;
+  node.isClosed = false;
+  node.parent = null;
+};
+
 function Node(x, y, type) {
   this.x = x;
   this.y = y;
-  this.type = type;
-  this.f = 0;
-  this.g = 0;
-  this.h = 0;
-  this.isVisited = false;
-  this.isClosed = false;
-  this.parent = null;
   this.position = [x, y];
+  this.weight = type;
 }
 
-export default function Graph(grid) {
-  const nodes = [];
-  let row;
+Node.prototype.getCost = function (fromNeighbor) {
+  if (fromNeighbor && fromNeighbor.x !== this.x && fromNeighbor.y !== this.y) {
+    return this.weight * 1.41421;
+  }
 
-  for (let x = 0; x < grid.length; x += 1) {
-    row = grid[x];
-    nodes[x] = Array.from({ length: row.length });
+  return this.weight;
+};
 
-    for (let y = 0; y < row.length; y += 1) {
-      nodes[x][y] = new Node(x, y, row[y]);
+Node.prototype.isWall = function () {
+  return this.weight === OBSTACLE_TILE;
+};
+
+export default function Graph(gridIn) {
+  this.nodes = [];
+  this.grid = [];
+
+  for (let x = 0; x < gridIn.length; x += 1) {
+    this.grid[x] = [];
+
+    for (let y = 0, row = gridIn[x]; y < row.length; y += 1) {
+      const node = new Node(x, y, row[y]);
+
+      this.grid[x][y] = node;
+      this.nodes.push(node);
     }
   }
 
-  this.nodes = nodes;
+  this.init();
 }
+
+Graph.prototype.init = function () {
+  this.dirtyNodes = [];
+
+  for (let i = 0; i < this.nodes.length; i += 1) {
+    cleanNode(this.nodes[i]);
+  }
+};
+
+Graph.prototype.markDirty = function (node) {
+  this.dirtyNodes.push(node);
+};

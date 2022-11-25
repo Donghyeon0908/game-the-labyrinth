@@ -1,4 +1,4 @@
-import { OBSTACLE_TILE } from "../constants/constants";
+import getHeap from "./Heap";
 
 const getManhattanDistance = (from, to) => {
   return Math.abs(from.x - to.x) + Math.abs(from.y - to.y);
@@ -24,57 +24,54 @@ const getNeighbors = (grid, node) => {
   return neighbors;
 };
 
-const AStar = (grid, start, end) => {
-  const openList = [start];
+const getPath = (node) => {
   const result = [];
+  let cur = node;
 
-  while (openList.length > 0) {
-    let lowIdx = 0;
+  while (cur.parent) {
+    result.push(cur.position);
+    cur = cur.parent;
+  }
 
-    for (let i = 0; i < openList.length; i += 1) {
-      if (openList[i].f < openList[lowIdx].f) {
-        lowIdx = i;
-      }
-    }
+  return result.reverse();
+};
 
-    const currentNode = openList[lowIdx];
+const AStar = (graph, start, end) => {
+  const openHeap = getHeap();
+
+  start.h = getManhattanDistance(start, end);
+  graph.markDirty(start);
+  openHeap.push(start);
+
+  while (openHeap.size() > 0) {
+    const currentNode = openHeap.pop();
 
     if (currentNode === end) {
-      let cur = currentNode;
-
-      while (cur.parent) {
-        result.push(cur.position);
-        cur = cur.parent;
-      }
-
-      return result.reverse();
+      return getPath(currentNode);
     }
 
-    openList.splice(lowIdx, 1);
     currentNode.isClosed = true;
 
-    const neighbors = getNeighbors(grid, currentNode);
+    const neighbors = getNeighbors(graph.grid, currentNode);
 
     for (let i = 0; i < neighbors.length; i += 1) {
       const neighbor = neighbors[i];
 
-      if (!neighbor.isClosed && neighbor.type !== OBSTACLE_TILE) {
-        const gScore = currentNode.g + 1;
-        let isBestScore = false;
+      if (!neighbor.isClosed && !neighbor.isWall()) {
+        const gScore = currentNode.g + neighbor.getCost(currentNode);
+        const hasBeenVisited = neighbor.isVisited;
 
-        if (!neighbor.visited) {
-          isBestScore = true;
-          neighbor.h = getManhattanDistance(neighbor, end);
+        if (!hasBeenVisited || gScore < neighbor.g) {
           neighbor.isVisited = true;
-          openList.push(neighbor);
-        } else if (gScore < neighbor.g) {
-          isBestScore = true;
-        }
-
-        if (isBestScore) {
           neighbor.parent = currentNode;
+          neighbor.h = neighbor.h || getManhattanDistance(neighbor, end);
           neighbor.g = gScore;
           neighbor.f = neighbor.g + neighbor.h;
+          graph.markDirty(neighbor);
+
+          hasBeenVisited
+            ? openHeap.rescoreElement(neighbor)
+            : openHeap.push(neighbor);
         }
       }
     }

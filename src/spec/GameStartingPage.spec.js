@@ -10,12 +10,14 @@ jest.mock("react-router-dom", () => ({
 }));
 
 describe("초기화면 테스트", () => {
-  it("처음 화면에 타이틀과 2개의 버튼이 있음 있음", () => {
+  beforeEach(() =>
     render(
       <Router>
         <GameStartingPage />
       </Router>
-    );
+    )
+  );
+  it("처음 화면에 타이틀과 2개의 버튼이 있음 있음", () => {
     const guideButton = screen.getByRole("button", { name: "Game Guide" });
     const startButton = screen.getByRole("button", { name: "Game Start" });
     const Title = screen.getByText("The Labyrinth");
@@ -26,11 +28,6 @@ describe("초기화면 테스트", () => {
   });
 
   it("게임 스타트 버튼을 누르면 해당 페이지로 이동", () => {
-    render(
-      <Router>
-        <GameStartingPage />
-      </Router>
-    );
     const startButton = screen.getByRole("button", { name: "Game Start" });
     userEvent.click(startButton);
 

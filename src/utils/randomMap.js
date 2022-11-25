@@ -22,9 +22,9 @@ const getMapData = () => {
   const [start, end] = getStartingEndPoint(mapData);
 
   const path = AStar(
-    graph.nodes,
-    graph.nodes[start[0]][start[1]],
-    graph.nodes[end[0]][end[1]]
+    graph,
+    graph.grid[start[0]][start[1]],
+    graph.grid[end[0]][end[1]]
   );
 
   return path.length >= 20 ? mapData : getMapData();

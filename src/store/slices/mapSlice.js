@@ -1,5 +1,5 @@
 const mapSlice = (set) => ({
-  tilesImageData: {},
+  ImageData: {},
   isMap: false,
   shortestPath: [],
   mapData: null,
@@ -8,8 +8,8 @@ const mapSlice = (set) => ({
 
   setBufferImage: (payload) =>
     set((state) => ({
-      tilesImageData: {
-        ...state.tilesImageData,
+      ImageData: {
+        ...state.ImageData,
         [payload]: 1,
       },
     })),

@@ -15,9 +15,9 @@ function GameInitSetting() {
   const graph = new Graph(mapData);
   const [start, end] = getStartingEndPoint(mapData);
   const shortestPath = AStar(
-    graph.nodes,
-    graph.nodes[start[0]][start[1]],
-    graph.nodes[end[0]][end[1]]
+    graph,
+    graph.grid[start[0]][start[1]],
+    graph.grid[end[0]][end[1]]
   );
 
   useEffect(() => {

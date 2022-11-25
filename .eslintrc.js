@@ -27,6 +27,7 @@ module.exports = {
     "react/jsx-props-no-spreading": "off",
     "react/react-in-jsx-scope": "off",
     "react/self-closing-comp": "off",
+    "func-names": ["error", "never"],
     "react/jsx-filename-extension": ["warn", { extensions: [".js", ".jsx"] }],
     "no-param-reassign": 0,
   },
