@@ -33,6 +33,9 @@ function ImagesBuffer() {
               id={`character-sprite-${key}`}
               src={CHARACTER_SPRITE[key]}
               alt={`character-sprite-${key}`}
+              onLoad={() => {
+                setBufferImage(CHARACTER_SPRITE[key]);
+              }}
             />
           );
         })}

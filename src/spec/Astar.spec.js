@@ -8,9 +8,9 @@ describe("A* 알고리즘 테스트", () => {
     const end = [0, 0];
     const mapData = new Graph(DEFAULT_MAPDATA);
     const result = AStar(
-      mapData.nodes,
-      mapData.nodes[start[0]][start[1]],
-      mapData.nodes[end[0]][end[1]]
+      mapData,
+      mapData.grid[start[0]][start[1]],
+      mapData.grid[end[0]][end[1]]
     );
     const path = [
       [8, 14],
