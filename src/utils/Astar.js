@@ -1,4 +1,4 @@
-import getHeap from "./Heap";
+import BinaryHeap from "./Heap";
 
 const getManhattanDistance = (from, to) => {
   return Math.abs(from.x - to.x) + Math.abs(from.y - to.y);
@@ -37,8 +37,7 @@ const getPath = (node) => {
 };
 
 const AStar = (graph, start, end) => {
-  const openHeap = getHeap();
-
+  const openHeap = new BinaryHeap();
   start.h = getManhattanDistance(start, end);
   graph.markDirty(start);
   openHeap.push(start);
@@ -58,7 +57,7 @@ const AStar = (graph, start, end) => {
       const neighbor = neighbors[i];
 
       if (!neighbor.isClosed && !neighbor.isWall()) {
-        const gScore = currentNode.g + neighbor.getCost(currentNode);
+        const gScore = currentNode.g;
         const hasBeenVisited = neighbor.isVisited;
 
         if (!hasBeenVisited || gScore < neighbor.g) {
