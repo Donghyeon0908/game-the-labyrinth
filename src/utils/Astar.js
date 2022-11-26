@@ -57,7 +57,7 @@ const AStar = (graph, start, end) => {
       const neighbor = neighbors[i];
 
       if (!neighbor.isClosed && !neighbor.isWall()) {
-        const gScore = currentNode.g + neighbor.getCost(currentNode);
+        const gScore = currentNode.g;
         const hasBeenVisited = neighbor.isVisited;
 
         if (!hasBeenVisited || gScore < neighbor.g) {

@@ -7,7 +7,7 @@ import AStar from "./AStar";
 import Graph from "./Graph";
 import { getStartingEndPoint } from "./utils";
 
-const { COLS } = MAP_SIZE;
+const { COLS, ROWS } = MAP_SIZE;
 
 const getMapData = () => {
   const mapData = DEFAULT_MAPDATA.map((rows) => {
@@ -16,7 +16,7 @@ const getMapData = () => {
     });
   });
   mapData[0][Math.floor(Math.random() * COLS)] = 2;
-  mapData[9][Math.floor(Math.random() * COLS)] = 3;
+  mapData[ROWS - 1][Math.floor(Math.random() * COLS)] = 3;
 
   const graph = new Graph(mapData);
   const [start, end] = getStartingEndPoint(mapData);

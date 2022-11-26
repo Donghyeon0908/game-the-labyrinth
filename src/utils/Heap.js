@@ -1,4 +1,4 @@
-export default class BinaryHeap {
+class BinaryHeap {
   constructor() {
     this.content = [];
     this.scoreFunction = (node) => node.f;
@@ -97,3 +97,5 @@ export default class BinaryHeap {
     }
   }
 }
+
+export default BinaryHeap;

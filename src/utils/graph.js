@@ -1,6 +1,6 @@
 import Node from "./Node";
 
-export default class Graph {
+class Graph {
   constructor(gridIn) {
     this.nodes = [];
     this.grid = [];
@@ -22,3 +22,5 @@ export default class Graph {
     this.dirtyNodes.push(node);
   }
 }
+
+export default Graph;
