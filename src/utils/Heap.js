@@ -10,7 +10,7 @@ class BinaryHeap {
   }
 
   pop() {
-    const result = this.content[0];
+    const min = this.content[0];
     const end = this.content.pop();
 
     if (this.content.length > 0) {
@@ -18,7 +18,7 @@ class BinaryHeap {
       this.bubbleUp(0);
     }
 
-    return result;
+    return min;
   }
 
   remove(node) {
@@ -44,16 +44,16 @@ class BinaryHeap {
 
   sinkDown(n) {
     const element = this.content[n];
-    let number = n;
+    let idx = n;
 
-    while (number > 0) {
-      const parentN = parseInt((number - 1) / 2, 10);
-      const parent = this.content[parentN];
+    while (idx > 0) {
+      const parentIdx = parseInt((idx - 1) / 2, 10);
+      const parent = this.content[parentIdx];
 
       if (this.scoreFunction(element) < this.scoreFunction(parent)) {
-        this.content[parentN] = element;
-        this.content[number] = parent;
-        number = parentN;
+        this.content[parentIdx] = element;
+        this.content[idx] = parent;
+        idx = parentIdx;
       } else {
         break;
       }
@@ -62,13 +62,13 @@ class BinaryHeap {
 
   bubbleUp(n) {
     const elLength = this.content.length;
-    let number = n;
-    const element = this.content[number];
+    let idx = n;
+    const element = this.content[idx];
     const elScore = this.scoreFunction(element);
 
     while (true) {
-      const leftChildIdx = 2 * number + 1;
-      const rightChildIdx = 2 * number + 2;
+      const leftChildIdx = 2 * idx + 1;
+      const rightChildIdx = 2 * idx + 2;
       let leftChildScore;
       let swap = null;
 
@@ -91,9 +91,9 @@ class BinaryHeap {
 
       if (swap === null) break;
 
-      this.content[number] = this.content[swap];
+      this.content[idx] = this.content[swap];
       this.content[swap] = element;
-      number = swap;
+      idx = swap;
     }
   }
 }
