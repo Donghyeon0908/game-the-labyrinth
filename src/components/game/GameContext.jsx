@@ -4,7 +4,7 @@ import useStore from "../../store/useStore";
 import { MAP_SIZE, TILE_SIZE, KEYBOARD_MOVE } from "../../constants/constants";
 import checkMapCollision from "../../utils/collision";
 import CanvasContext from "../canvas/CanvasContext";
-import { getMoveType } from "../../utils/utils";
+import getMoveType from "../../utils/moveType";
 
 function GameContext({ children }) {
   const characterX = useStore((state) => state.x);
@@ -32,7 +32,9 @@ function GameContext({ children }) {
       const { key } = event;
       if (KEYBOARD_MOVE[key] && isSuccess) {
         getCharacterMoveType(getMoveType(key));
+
         const [x, y] = KEYBOARD_MOVE[key];
+
         if (!checkMapCollision(characterX + x, characterY + y, mapData)) {
           setIsUpdateRequired(true);
           setIsRender(false);
@@ -67,6 +69,7 @@ function GameContext({ children }) {
       setIsRender(true);
       setIsUpdateRequired(false);
     }
+
     ref.current = requestAnimationFrame(step);
   }, [isUpdateRequired, setIsRender, setIsUpdateRequired]);
 
@@ -83,6 +86,7 @@ function GameContext({ children }) {
 
   useEffect(() => {
     document.addEventListener("keypress", moveCharacter);
+
     return () => {
       document.removeEventListener("keypress", moveCharacter);
     };

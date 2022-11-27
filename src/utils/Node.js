@@ -4,7 +4,6 @@ class Node {
   constructor(x, y, type) {
     this.x = x;
     this.y = y;
-    this.position = [x, y];
     this.type = type;
     this.f = 0;
     this.g = 0;

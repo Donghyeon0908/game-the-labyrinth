@@ -1,5 +1,7 @@
 import { useEffect, useMemo } from "react";
+
 import useStore from "../../store/useStore";
+import isEqual from "../../utils/utils";
 
 function GamePathComparisonController() {
   const playerX = useStore((state) => state.x);
@@ -15,10 +17,9 @@ function GamePathComparisonController() {
   useEffect(() => {
     if (
       curPosition[0] !== null &&
-      JSON.stringify(curPosition) !== JSON.stringify(startingPoint) &&
-      JSON.stringify(curPosition) !==
-        JSON.stringify(shortestPath[shortestPath.length - 1]) &&
-      JSON.stringify(curPosition) !== JSON.stringify(shortestPath[moveCount])
+      !isEqual(curPosition, startingPoint) &&
+      !isEqual(curPosition, shortestPath[shortestPath.length - 1]) &&
+      !isEqual(curPosition, shortestPath[moveCount])
     ) {
       setIsSuccess(false);
     }
@@ -26,8 +27,8 @@ function GamePathComparisonController() {
 
   useEffect(() => {
     if (
-      JSON.stringify(curPosition) ===
-      JSON.stringify(shortestPath[shortestPath.length - 1])
+      curPosition[0] !== null &&
+      isEqual(curPosition, shortestPath[shortestPath.length - 1])
     ) {
       setIsClear(true);
       setMoveCount(0);

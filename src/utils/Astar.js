@@ -29,7 +29,7 @@ const getPath = (node) => {
   let cur = node;
 
   while (cur.parent) {
-    result.push(cur.position);
+    result.push([cur.x, cur.y]);
     cur = cur.parent;
   }
 
@@ -53,9 +53,7 @@ const AStar = (graph, start, end) => {
 
     const neighbors = getNeighbors(graph.grid, currentNode);
 
-    for (let i = 0; i < neighbors.length; i += 1) {
-      const neighbor = neighbors[i];
-
+    for (const neighbor of neighbors) {
       if (!neighbor.isClosed && !neighbor.isWall()) {
         const gScore = currentNode.g + 1;
         const hasBeenVisited = neighbor.isVisited;

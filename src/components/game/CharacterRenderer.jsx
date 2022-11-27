@@ -32,6 +32,7 @@ function CharacterRenderer() {
         CHARACTER_SIZE
       );
     }
+
     if (!isSuccess) {
       ctx.drawImage(
         document.querySelector("#character-sprite-DIE"),

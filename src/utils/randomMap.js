@@ -1,25 +1,25 @@
 import {
   RANDOM_TILES,
   MAP_SIZE,
-  DEFAULT_MAPDATA,
+  START_TILE,
+  END_TILE,
 } from "../constants/constants";
 import AStar from "./AStar";
 import Graph from "./Graph";
-import { getStartingEndPoint } from "./utils";
+import getPosition from "./position";
 
 const { COLS, ROWS } = MAP_SIZE;
 
 const getMapData = () => {
-  const mapData = DEFAULT_MAPDATA.map((rows) => {
-    return rows.map(() => {
-      return RANDOM_TILES[Math.round(Math.random())];
-    });
-  });
-  mapData[0][Math.floor(Math.random() * COLS)] = 2;
-  mapData[ROWS - 1][Math.floor(Math.random() * COLS)] = 3;
+  const mapData = Array.from({ length: ROWS }, () =>
+    Array.from({ length: COLS }, () => RANDOM_TILES[Math.round(Math.random())])
+  );
+  mapData[0][Math.floor(Math.random() * COLS)] = END_TILE;
+  mapData[ROWS - 1][Math.floor(Math.random() * COLS)] = START_TILE;
 
   const graph = new Graph(mapData);
-  const [start, end] = getStartingEndPoint(mapData);
+  const start = getPosition(mapData, START_TILE);
+  const end = getPosition(mapData, END_TILE);
 
   const path = AStar(
     graph,
