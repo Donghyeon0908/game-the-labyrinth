@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import useStore from "../../store/useStore";
 import Graph from "../../utils/Graph";
-import { getStartingEndPoint } from "../../utils/utils";
+import getStartingEndPoint from "../../utils/position";
 import AStar from "../../utils/AStar";
 
 import getMapData from "../../utils/randomMap";

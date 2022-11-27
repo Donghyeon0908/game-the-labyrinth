@@ -3,7 +3,7 @@ import { DEFAULT_MAPDATA } from "../constants/constants";
 import Graph from "../utils/Graph";
 
 describe("A* 알고리즘 테스트", () => {
-  it.only("A* 알고리즘으로 최단경로를 구한다", () => {
+  it("A* 알고리즘으로 최단경로를 구한다", () => {
     const start = [9, 14];
     const end = [0, 0];
     const mapData = new Graph(DEFAULT_MAPDATA);

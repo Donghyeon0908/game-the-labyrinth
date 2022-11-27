@@ -14,22 +14,21 @@ function GameMapRenderer() {
       for (let i = 0; i < ROWS; i += 1) {
         for (let j = 0; j < COLS; j += 1) {
           const item = grid[i][j];
-          if (item) {
-            const img = document.querySelector(`#map-tile-${item}`);
-            const x = j * TILE_SIZE;
-            const y = i * TILE_SIZE;
-            ctx.drawImage(
-              img,
-              0,
-              0,
-              TILE_SIZE,
-              TILE_SIZE,
-              x,
-              y,
-              TILE_SIZE,
-              TILE_SIZE
-            );
-          }
+          const img = document.querySelector(`#map-tile-${item}`);
+          const x = j * TILE_SIZE;
+          const y = i * TILE_SIZE;
+
+          ctx.drawImage(
+            img,
+            0,
+            0,
+            TILE_SIZE,
+            TILE_SIZE,
+            x,
+            y,
+            TILE_SIZE,
+            TILE_SIZE
+          );
         }
       }
     };

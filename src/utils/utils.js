@@ -1,46 +1,15 @@
-import { MAP_SIZE } from "../constants/constants";
+const isEqual = (curPosition, diffPosition) => {
+  const iterator = curPosition.entries();
+  let result = true;
 
-export const getStartingEndPoint = (mapData) => {
-  const startingPoint = [];
-  const endPoint = [];
-
-  for (let i = 0; i < MAP_SIZE.ROWS; i += 1) {
-    for (let j = 0; j < MAP_SIZE.COLS; j += 1) {
-      if (mapData[i][j] === 2) {
-        endPoint.push(i, j);
-      }
-      if (mapData[i][j] === 3) {
-        startingPoint.push(i, j);
-      }
+  for (const [index, value] of iterator) {
+    if (value !== diffPosition[index]) {
+      result = false;
+      break;
     }
   }
 
-  return [startingPoint, endPoint];
+  return result;
 };
 
-export const getMoveType = (key) => {
-  let type = "";
-
-  switch (key) {
-    case "w":
-    case "ㅈ":
-      type = "up";
-      break;
-    case "a":
-    case "ㅁ":
-      type = "left";
-      break;
-    case "d":
-    case "ㅇ":
-      type = "right";
-      break;
-    case "s":
-    case "ㄴ":
-      type = "down";
-      break;
-    default:
-      type = "";
-  }
-
-  return type;
-};
+export default isEqual;

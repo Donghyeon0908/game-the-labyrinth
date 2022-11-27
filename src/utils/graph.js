@@ -9,8 +9,8 @@ class Graph {
     for (let x = 0; x < gridIn.length; x += 1) {
       this.grid[x] = [];
 
-      for (let y = 0, row = gridIn[x]; y < row.length; y += 1) {
-        const node = new Node(x, y, row[y]);
+      for (let y = 0; y < gridIn[x].length; y += 1) {
+        const node = new Node(x, y, gridIn[x][y]);
 
         this.grid[x][y] = node;
         this.nodes.push(node);
