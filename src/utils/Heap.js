@@ -67,8 +67,8 @@ class BinaryHeap {
     const elScore = this.scoreFunction(element);
 
     while (true) {
-      const leftChildIdx = 2 * idx + 1;
-      const rightChildIdx = 2 * idx + 2;
+      const leftChildIdx = 2 * idx;
+      const rightChildIdx = 2 * idx + 1;
       let leftChildScore;
       let swap = null;
 

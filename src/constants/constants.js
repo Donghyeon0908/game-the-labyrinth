@@ -32,6 +32,10 @@ export const KEYBOARD_MOVE = {
 
 export const OBSTACLE_TILE = 4;
 
+export const START_TILE = 3;
+
+export const END_TILE = 2;
+
 export const CHARACTER_SPRITE = {
   DEFAULT: "assets/images/defaultPlayer.png",
   RIGHT: "assets/images/rightmove-1.png",

@@ -1,21 +1,16 @@
-import { MAP_SIZE } from "../constants/constants";
+const getPosition = (mapData, target) => {
+  const result = [];
 
-const getStartingEndPoint = (mapData) => {
-  const startingPoint = [];
-  const endPoint = [];
-
-  for (let i = 0; i < MAP_SIZE.ROWS; i += 1) {
-    for (let j = 0; j < MAP_SIZE.COLS; j += 1) {
-      if (mapData[i][j] === 2) {
-        endPoint.push(i, j);
-      }
-      if (mapData[i][j] === 3) {
-        startingPoint.push(i, j);
+  for (let i = 0; i < mapData.length; i += 1) {
+    for (let j = 0; j < mapData[i].length; j += 1) {
+      if (mapData[i][j] === target) {
+        result.push(i, j);
+        break;
       }
     }
   }
 
-  return [startingPoint, endPoint];
+  return result;
 };
 
-export default getStartingEndPoint;
+export default getPosition;
