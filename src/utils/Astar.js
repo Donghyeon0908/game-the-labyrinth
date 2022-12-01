@@ -14,10 +14,10 @@ const getNeighbors = (grid, node) => {
   if (grid[x + 1] && grid[x + 1][y]) {
     neighbors.push(grid[x + 1][y]);
   }
-  if (grid[x][y - 1] && grid[x][y - 1]) {
+  if (grid[x][y - 1]) {
     neighbors.push(grid[x][y - 1]);
   }
-  if (grid[x][y + 1] && grid[x][y + 1]) {
+  if (grid[x][y + 1]) {
     neighbors.push(grid[x][y + 1]);
   }
 
