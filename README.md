@@ -32,7 +32,7 @@ https://the-labyrinth.online/
 - 기획
   - [2022.11.07 ~ 2022.11.13](https://www.notion.so/eb51050ccbd84cda8fff35496284f097)
 - 개발
-  - [2022.11.14 ~ 2022.11.26](https://www.notion.so/06bae5eaa5454a5ba605117906cf0057?v=bfd28deb2099447086e057251b75db68)
+  - [2022.11.14 ~ 2022.11.26](https://rust-spade-c0e.notion.site/06bae5eaa5454a5ba605117906cf0057?v=fb0d338a59e3465fabb55302fa01ea9f)
 
 ## 기술스택
 
