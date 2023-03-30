@@ -4,7 +4,7 @@
 알게 되어 직접 구현을 해보고 그 원리를 파악하고 싶었기에 최단 경로 알고리즘을 이용한 게임을 만들게 되었습니다.
 
 ### 배포
-https://the-labyrinth.online/
+https://www.the-labyrinth.online/
 
 ## 목차
 
