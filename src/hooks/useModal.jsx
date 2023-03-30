@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "../components/modal/Modal";
 
 function useModal(initialState = false) {
@@ -19,6 +19,20 @@ function useModal(initialState = false) {
       </Modal>
     );
   };
+
+  useEffect(() => {
+    const handleKeyDown = () => {
+      if (isOpenModal) {
+        setIsOpenModal(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpenModal]);
 
   return [customModal, handleModal];
 }

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import { styled } from "@stitches/react";
 
-import backgroundImage from "../assets/images/dungeon.png";
+import backgroundImage from "../assets/images/dungeon.webp";
 import GameContext from "./game/GameContext";
 import GameView from "./game/GameView";
 import GameInitSetting from "./game/GameInitSetting";
@@ -50,7 +50,7 @@ const GameContainer = styled("div", {
   backgroundImage: `url(${backgroundImage})`,
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
-  backgroundSize: "100%",
+  backgroundSize: "cover",
   justifyContent: "center",
   alignItems: "center",
 });

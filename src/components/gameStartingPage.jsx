@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { styled } from "@stitches/react";
 
-import backgroundImage from "../assets/images/initImage.png";
+import backgroundImage from "../assets/images/initImage.webp";
 import GameStartingPageHeader from "./header/GameStartingPageHeader";
 import Button from "./buttons/Button";
 import useModal from "../hooks/useModal";
@@ -38,7 +38,7 @@ const GameStartingPageContainer = styled("div", {
   backgroundImage: `url(${backgroundImage})`,
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
-  backgroundSize: "100%",
+  backgroundSize: "cover",
 });
 
 const ButtonContainer = styled("div", {
